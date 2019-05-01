@@ -11,6 +11,13 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/home", function(req, res) {
+    db.Example.findAll({}).then(function(dbExamples) {
+      res.render("home");
+    });
+  });
+
+
   // Load example page and pass in an example by id
   app.get("/example/:id", function(req, res) {
     db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
