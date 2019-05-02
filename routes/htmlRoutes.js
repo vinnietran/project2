@@ -17,6 +17,19 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/employer", function(req, res) {
+    db.Example.findAll({}).then(function(dbExamples) {
+      res.render("employer");
+    });
+  });
+
+  app.get("/employee", function(req, res) {
+    db.Example.findAll({}).then(function(dbExamples) {
+      res.render("employee");
+    });
+  });
+
+
 
   // Load example page and pass in an example by id
   app.get("/example/:id", function(req, res) {
