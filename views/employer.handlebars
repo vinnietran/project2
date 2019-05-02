@@ -8,8 +8,9 @@
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIYLypbzuWg4gxZLmQKjsBJf0i1pAo4dk&callback=initMap"
     type="text/javascript"></script>
-    
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <style>
     /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -52,19 +53,22 @@
         width: 80%;
       }
     }
-    #banner{
-margin-top: 20px;
-margin-left: 10px;
-margin-right: 10px;
-opacity: 0.8;
+
+    #banner {
+      margin-top: 20px;
+      margin-left: 10px;
+      margin-right: 10px;
+      opacity: 0.8;
 
     }
+
     #banner:hover {
-      opacity:0.9;
+      opacity: 0.9;
     }
-  .btn {
-    text-align: center;
-  }
+
+    .btn {
+      text-align: center;
+    }
   </style>
 </head>
 
@@ -76,29 +80,29 @@ opacity: 0.8;
 
     <div class="jumbotron jumbotron-fluid" id="banner">
       <div class="container">
-        
-       <a href ="/"> <i class="fas fa-home fa-3x"></i></a>
-       <hr>
+
+        <a href="/"> <i class="fas fa-home fa-3x"></i></a>
+        <hr>
         <h1 class="display-4">Finding help is easy</h1>
         <p class="lead">Click the map to add a pin and fill out the form</p>
         <hr>
         <form>
-  <div class="form-group">
-    <label for="formGroupExampleInput">Name</label>
-    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Please enter your name">
-  </div>
-  <div class="form-group">
-    <label for="formGroupExampleInput2">Job Description and Price</label>
-    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Please fill out">
-  </div>
-  <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-  <label class="form-check-label" for="defaultCheck1">
-    I understand that this job description and price is correct.
-</div>
-<br>
-<button type="button" class="btn btn-secondary btn-lg">Submit Job</button>
-</form>
+          <div class="form-group">
+            <label for="formGroupExampleInput">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Please enter your name">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2">Job Description and Price</label>
+            <input type="text" class="form-control" id="job" placeholder="Please fill out">
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label" for="defaultCheck1">
+              I understand that this job description and price is correct.
+          </div>
+          <br>
+          <button type="button" class="btn btn-secondary btn-lg" onclick="submitData()">Submit Job</button>
+        </form>
       </div>
     </div>
 
@@ -111,13 +115,33 @@ opacity: 0.8;
     <div id="map"></div>
 
   </div>
+  <script>
+// for inputs from form
 
+
+
+
+function submitData() {
+  event.preventDefault();
+ var name = document.getElementById("name");
+var jobDescription = document.getElementById("job");
+if ( document.getElementById("defaultCheck1").checked === true) {
+var confirmJob = true;
+//post to sql  ---  post();
+}
+else(
+   confirmJob = false
+  
+)
+
+console.log("name:  " + name.value + "  job description:  " + jobDescription.value + "   confirm check =  " + confirmJob);
+}
+
+  </script>
 
   <script>
-    // Note: This example requires that you consent to location sharing when
-    // prompted by your browser. If you see the error "The Geolocation service
-    // failed.", it means you probably did not give permission for the browser to
-    // locate you.
+    // for google map api
+    
     var map, infoWindow;
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
@@ -145,8 +169,8 @@ opacity: 0.8;
         // Browser doesn't support Geolocation
         handleLocationError(false, infoWindow, map.getCenter());
       }
-       
-      
+
+
     }
 
     function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -156,10 +180,10 @@ opacity: 0.8;
         'Error: Your browser doesn\'t support geolocation.');
       infoWindow.open(map);
     }
-   
+
 
   </script>
-  
+
   </div>
 
 
