@@ -1,32 +1,11 @@
 DROP DATABASE IF EXISTS exampledb;
 CREATE DATABASE exampledb;
+use exampledb;
 
-DROP DATABASE IF EXISTS testdb;
-CREATE DATABASE testdb;
-
-/* Production Schema*/
 CREATE TABLE users (
-    user_id INT AUTO_INCREMENT NOT NULL, 
-    name VARCHAR (50) NOT NULL, 
-    email VARCHAR (50) NOT NULL, 
-    password VARCHAR (50) NOT NULL, 
-    primary key(user_id)
+ id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR (100) NOT NULL, 
+    email VARCHAR (100) NOT NULL, 
+    password VARCHAR (100) NOT NULL, 
+  PRIMARY KEY (id)
 );
-CREATE TABLE job_posts (
-	job_id INT AUTO_INCREMENT NOT NULL,    
-    posted_by INT NOT NULL, 
-    accepted_by INT NOT NULL, 
-    job_title VARCHAR (250) NOT NULL, 
-    job_description VARCHAR (500) NOT NULL, 
-    location VARCHAR (50) NOT NULL, 
-	createdAt TIMESTAMP NOT NULL, 
-    foreign key (posted_by)
-     REFERENCES users(user_id)
-     ON DELETE CASCADE
-     ON UPDATE CASCADE,
-	foreign key (accepted_by)
-     REFERENCES users(user_id)
-     ON DELETE CASCADE
-     ON UPDATE CASCADE,
-    primary key(job_id)
-)
