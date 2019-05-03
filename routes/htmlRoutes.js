@@ -3,28 +3,28 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
+    db.users.findAll({}).then(function(dbusers) {
       res.render("index", {
         msg: "Welcome!",
-        examples: dbExamples
+        users: dbusers
       });
     });
   });
 
   app.get("/home", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
+    db.users.findAll({}).then(function(dbusers) {
       res.render("home");
     });
   });
 
   app.get("/employer", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
+    db.users.findAll({}).then(function(dbusers) {
       res.render("employer");
     });
   });
 
   app.get("/employee", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
+    db.users.findAll({}).then(function(dbusers) {
       res.render("employee");
     });
   });
@@ -32,10 +32,10 @@ module.exports = function(app) {
 
 
   // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.render("example", {
-        example: dbExample
+  app.get("/users/:id", function(req, res) {
+    db.users.findOne({ where: { id: req.params.id } }).then(function(dbusers) {
+      res.render("users", {
+        users: dbusers
       });
     });
   });

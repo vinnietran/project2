@@ -7,12 +7,11 @@ CREATE DATABASE testdb;
 /* Production Schema*/
 CREATE TABLE users (
     user_id INT AUTO_INCREMENT NOT NULL, 
-    fname VARCHAR (50) NOT NULL, 
-    lname VARCHAR (50) NOT NULL, 
-    createdAt TIMESTAMP NOT NULL, 
+    name VARCHAR (50) NOT NULL, 
+    email VARCHAR (50) NOT NULL, 
+    password VARCHAR (50) NOT NULL, 
     primary key(user_id)
-)
-
+);
 CREATE TABLE job_posts (
 	job_id INT AUTO_INCREMENT NOT NULL,    
     posted_by INT NOT NULL, 
