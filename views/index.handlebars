@@ -5,12 +5,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>taskScan</title>
 	<meta name="description" content="">
-	<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://code.jquery.com/jquery.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/css/all.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		  
 </head>
 <style>
 	@import url('https://fonts.googleapis.com/css?family=Ubuntu');
@@ -338,7 +339,7 @@
 
 	<div class="container" id="container">
 		<div class="form-container sign-up-container">
-			<form id="userCreateForm">
+			<form class="signup">
 				<h1>Create Account</h1>
 				<div class="social-container">
 					<a href="https://www.facebook.com" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -346,10 +347,10 @@
 					<a href="https://www.linkedin.com" class="social"><i class="fab fa-linkedin-in"></i></a>
 				</div>
 				<span>or use your email for registration</span>
-				<input type="text" placeholder="Name" id="createName" />
-				<input type="email" placeholder="Email" id="createEmail" />
-				<input type="password" placeholder="Password" id="createPassword" />
-				<button input type="submit">Sign In </button>
+				<input type="text" placeholder="Name" id="name-input"/>
+				<input type="email" placeholder="Email" id="email-input" />
+				<input type="password" placeholder="Password" id="password-input" />
+				<button type="submit" id="createUser">Sign In </button>
 				{{!-- href="./home" style="text-decoration:none;" --}}
 			</form>
 		</div>
@@ -419,7 +420,7 @@
 		const signUpButton = document.getElementById('signUp');
 		const signInButton = document.getElementById('signIn');
 		const container = document.getElementById('container');
-
+var createUserButton = document.getElementById('createUser');
 		signUpButton.addEventListener('click', () => container.classList.add('right-panel-active'));
 
 		signInButton.addEventListener('click', () => container.classList.remove('right-panel-active'));
@@ -427,40 +428,67 @@
 	</script>
 	<script
 		src="https://static.codepen.io/assets/editor/live/css_reload-5619dc0905a68b2e6298901de54f73cefe4e079f65a75406858d92924b4938bf.js"></script>
-<script>
+
 	
 
 
-  // Getting the initial list of Authors
-  // getAuthors();
 
-  // A function to handle what happens when the form is submitted to create a new Author
-  function handleUserFormSubmit(name,email,password) {
-   	console.log("clicked!");
-    // Don't do anything if the name fields hasn't been filled out
-    // if (!nameInput.val().trim().trim()) {
-    //   return;
-    // }
-    // Calling the upsertAuthor function and passing in the value of the name input
-    updateUser({
+
+ <script>
+	 
+
+$(document).ready(function() {
+
+
+  // Getting jQuery references to the post body, title, form, and category select
+ var nameInput = $("input#name-input");
+ var emailInput = $("input#email-input");
+  var passwordInput = $("input#password-input");
+
+var signUpForm = $("form.signup");
+
+ 
+  // When the signup button is clicked, we validate the email and password are not blank
+  signUpForm.on("submit", function(event) {
+    event.preventDefault();
+    var userData= {
+      name: nameInput.val().trim(),
+      email: emailInput.val().trim(),
+      password: passwordInput.val().trim()
+    };
+
+    if (!userData.email || !userData.password) {
+      return;
+    }
+    // If we have an email and password, run the signUpUser function
+    signUpUser(userData.name,userData.email, userData.password);
+    nameInput.val("");
+    emailInput.val("");
+    passwordInput.val("");
+		console.log("test1")
+  });
+
+  // Does a post to the signup route. If successful, we are redirected to the members page
+  // Otherwise we log any errors
+  function signUpUser(name,email,password) {
+    $.post("/api/signup", {
       name: name,
       email: email,
       password: password
-        .val()
-        .trim()
-    });
+    }).then(function(data) {
+      window.location.replace(data);
+			console.log("test2")
+      // If there's an error, handle it by throwing up a bootstrap alert
+    }).catch(handleLoginErr);
 	
   }
 
-  // A function for creating an author. Calls getAuthors upon completion
-  function updateUser(userData) {
-    $.post("/api/users", userData)
-      .then(getUsers);
-  };
-
-
-</script>
-       
+  function handleLoginErr(err) {
+    $("#alert .msg").text(err.responseJSON);
+    $("#alert").fadeIn(500);
+  }
+});
+ </script>
 </body>
 
 </html>
