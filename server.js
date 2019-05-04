@@ -1,47 +1,23 @@
-require("dotenv").config();
-var express = require("express");
-var exphbs = require("express-handlebars");
+// Require/import the HTTP module
+var http = require("http");
 
-var db = require("./models");
+// Define a port to listen for incoming requests
+var PORT = 8080;
 
-var app = express();
-var PORT = process.env.PORT || 3000;
+// Create a generic function to handle requests and responses
+function handleRequest(request, response) {
 
-// Middleware
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
-app.use(express.static("public"));
-
-// Handlebars
-app.engine(
-  "handlebars",
-  exphbs({
-    defaultLayout: "main"
-  })
-);
-app.set("view engine", "handlebars");
-
-// Routes
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
-
-var syncOptions = { force: false };
-
-// If running a test, set syncOptions.force to true
-// clearing the `testdb`
-if (process.env.NODE_ENV === "test") {
-  syncOptions.force = true;
+  // Send the below string to the client when the user visits the PORT URL
+  response.end("It Works!! Path Hit: " + request.url);
 }
 
-// Starting the server, syncing our models ------------------------------------/
-db.sequelize.sync(syncOptions).then(function() {
-  app.listen(PORT, function() {
-    console.log(
-      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
-      PORT,
-      PORT
-    );
-  });
-});
+// Use the Node HTTP package to create our server.
+// Pass the handleRequest function to empower it with functionality.
+var server = http.createServer(handleRequest);
 
-module.exports = app;
+// Start our server so that it can begin listening to client requests.
+server.listen(PORT, function() {
+
+  // Log (server-side) when our server has started
+  console.log("Server listening on: http://localhost:" + PORT);
+});
