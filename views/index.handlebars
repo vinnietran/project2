@@ -11,7 +11,8 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-		  
+		    <script type="text/javascript" src="/js/signup.js"></script>
+			 <script type="text/javascript" src="/js/login.js"></script>
 </head>
 <style>
 	@import url('https://fonts.googleapis.com/css?family=Ubuntu');
@@ -355,7 +356,7 @@
 			</form>
 		</div>
 		<div class="form-container sign-in-container">
-			<form action="#">
+			<form class="login">
 				<h1>Sign in</h1>
 				<div class="social-container">
 					<a href="https://www.facebook.com" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -363,10 +364,10 @@
 					<a href="https://www.linkedin.com" class="social"><i class="fab fa-linkedin-in"></i></a>
 				</div>
 				<span>or use your account</span>
-				<input type="email" placeholder="email" id="email" />
-				<input type="password" placeholder="password" id="password"/>
+				<input type="email" placeholder="email" id="email-input1" />
+				<input type="password" placeholder="password" id="password-input1"/>
 				<a href="./home" class="forgot-password">Forgot your password?</a>
-				<button><a onclick="userLogin()">Sign In </a></button>
+			<button type="submit" id="loginUser">Sign In </a></button>
 				{{!-- href="./home" style="text-decoration:none;"  --}}
 			</form>
 		</div>
@@ -386,34 +387,7 @@
 		</div>
 	</div>
 </body>
-	<script >
-
-		function createUser() {
-			event.preventDefault();
-			var name = document.getElementById("createName").value;
-			var email = document.getElementById("createEmail").value;
-			var password = document.getElementById("createPassword").value;
-	console.log("name   " + name + " email:  " + email + "password:  " + password);
-			//post to sql  ---  post();
-			handleUserFormSubmit(name,email,password);
-		}
-
-	function userLogin() {
-			event.preventDefault();
-			
-			var email = document.getElementById("email").value;
-			var password = document.getElementById("password").value;
-	console.log("email:  " + email + "password:  " + password);
-			//read/GET/CHECKING to sql  ---  post();
-		}
-
-
-
-
-
-
-
-	</script>
+	
 	<script
 		src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
 	<script id="rendered-js">
@@ -439,8 +413,8 @@ var createUserButton = document.getElementById('createUser');
 
 $(document).ready(function() {
 
+// CODE FOR CREATE LOGIN
 
-  // Getting jQuery references to the post body, title, form, and category select
  var nameInput = $("input#name-input");
  var emailInput = $("input#email-input");
   var passwordInput = $("input#password-input");
@@ -451,6 +425,7 @@ var signUpForm = $("form.signup");
   // When the signup button is clicked, we validate the email and password are not blank
   signUpForm.on("submit", function(event) {
     event.preventDefault();
+	console.log("test1");
     var userData= {
       name: nameInput.val().trim(),
       email: emailInput.val().trim(),
@@ -487,6 +462,48 @@ var signUpForm = $("form.signup");
     $("#alert .msg").text(err.responseJSON);
     $("#alert").fadeIn(500);
   }
+
+
+// CODE FOR LOGIN IN
+
+
+
+ var loginForm = $("form.login");
+  var emailInput = $("input#email-input1");
+  var passwordInput = $("input#password-input1");
+
+  // When the form is submitted, we validate there's an email and password entered
+  loginForm.on("submit", function(event) {
+    event.preventDefault();
+    var userData = {
+      email: emailInput.val().trim(),
+      password: passwordInput.val().trim()
+    };
+
+    if (!userData.email || !userData.password) {
+      return;
+    }
+
+    // If we have an email and password we run the loginUser function and clear the form
+    loginUser(userData.email, userData.password);
+    emailInput.val("");
+    passwordInput.val("");
+  });
+
+  // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
+  function loginUser(email, password) {
+    $.post("/api/login", {
+      email: email,
+      password: password
+    }).then(function(data) {
+      window.location.replace(data);
+      // If there's an error, log the error
+    }).catch(function(err) {
+      console.log(err);
+    });
+  }
+
+
 });
  </script>
 </body>
