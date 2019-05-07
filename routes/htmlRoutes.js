@@ -13,7 +13,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/home", function(req, res) {
+  app.get("/home", isAuthenticated, function(req, res) {
     db.users.findAll({}).then(function(dbusers) {
       res.render("home");
     });
