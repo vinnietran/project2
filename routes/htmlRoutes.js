@@ -13,19 +13,19 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/home",isAuthenticated, function(req, res) {
+  app.get("/home", isAuthenticated, function(req, res) {
     db.users.findAll({}).then(function(dbusers) {
       res.render("home");
     });
   });
 
-  app.get("/employer", isAuthenticated,function(req, res) {
+  app.get("/employer", function(req, res) {
     db.users.findAll({}).then(function(dbusers) {
       res.render("employer");
     });
   });
 
-  app.get("/employee", isAuthenticated, function(req, res) {
+  app.get("/employee", function(req, res) {
     db.users.findAll({}).then(function(dbusers) {
       res.render("employee");
     });
