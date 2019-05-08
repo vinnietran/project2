@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "Codepass7",
-    "database": "exampledb",
+    "database": "taskscandb",
     "host": "localhost",
     "dialect": "mysql"
   },

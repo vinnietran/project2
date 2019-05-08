@@ -17,5 +17,5 @@ Created a working post route to the DB for Jobs {
     -links in html fit to jquery
     - added routes for external js for most files
 }
-
+ gvet route for jobs and users in API ROUTES
 cleaned up expired js code in many files
