@@ -15,9 +15,29 @@ module.exports = function(app) {
     res.json("/home");
   });
 
-  // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
-  // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
-  // otherwise send back an error
+
+  
+  app.get("/api/:jobs?", function(req, res) {
+    if (req.params.category) {
+      // Display the JSON for ONLY that character.
+    
+      jobs.findOne({
+        where: {
+          category: req.params.category
+        }
+      }).then(function(result) {
+        return res.json(result);
+      });
+    } else {
+      jobs.findAll().then(function(result) {
+        return res.json(result);
+      });
+    }
+  });
+
+
+
+
   app.post("/api/signup", function(req, res) {
     console.log(req.body);
     db.users
@@ -35,12 +55,26 @@ module.exports = function(app) {
         // res.status(422).json(err.errors[0].message);
       });
   });
-
   app.post("/api/jobs", function(req, res) {
-    db.Post.create(req.body).then(function(dbJobs) {
-      res.json(dbJobs);
-    });
+    console.log(req.body);
+    db.jobs
+      .create({
+        name: req.body.name,
+        category: req.body.category,
+        description: req.body.description,
+        amount: req.body.amount
+      
+      })
+      .then(function() {
+        res.redirect(307, "/");
+      })
+      .catch(function(err) {
+        console.log(err);
+        res.json(err);
+        // res.status(422).json(err.errors[0].message);
+      });
   });
+ 
 
   // Route for logging user out
   app.get("/logout", function(req, res) {
@@ -64,6 +98,8 @@ module.exports = function(app) {
     }
   });
 };
+
+
 
 // var db = require("../models");
 // var passport = require("../config/passport");

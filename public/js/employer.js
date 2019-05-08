@@ -1,29 +1,57 @@
-$(document).ready(function() {
+$(document).ready(function () {
   // Getting jQuery references to the post body, title, form, and author select
   var dollarAmnt = $("#dollarAmount");
-  var jobDesc = $("#job");
-  var category = $("#job-type");
-  var jobForm = $("#job-form");
+  var jobDesc = $("#jobDescription");
+  var jobName = $("#name");
+  var category = $("#jobCategory");
+
+  var jobForm = $("form.jobCreate");
   // Adding an event listener for when the form is submitted
-  $(jobForm).on("submit", function(event) {
+
+
+
+  // When the signup button is clicked, we validate the email and password are not blank
+  jobForm.on("submit", function (event) {
     event.preventDefault();
-    // Wont submit the post if we are missing a body, title, or author
-    if (!category.val().trim() || !jobDesc.val().trim() || !dollarAmnt.val()) {
-      return;
-    }
-    // Constructing a newPost object to hand to the database
+    console.log("job form Submitted");
     var newJob = {
+
+      name: jobName.val(),
       category: category.val(),
-      description: jobDesc.val().trim(),
-      amount: dollarAmnt.val().trim()
+      description: jobDesc.val(),
+      amount: dollarAmnt.val()
     };
-    submitJob(newJob);
-    console.log("IT FUCKING SUBMITTED");
-    console.log(newJob);
+
+
+    // If we have an email and password, run the signUpUser function
+    createJobPost(newJob.name, newJob.category, newJob.description, newJob.amount);
+    jobName.val("");
+    category.val("");
+    jobDesc.val("");
+    dollarAmnt.val("");
+    console.log("Good User");
   });
-  function submitJob(job) {
-    $.post("/api/jobs", job, function() {
-      //window.location.href = "/blog";
-    });
+
+  // Does a post to the signup route. If successful, we are redirected to the members page
+  // Otherwise we log any errors
+  function createJobPost(name,category,description,amount) {
+    $.post("/api/jobs", {
+      name: name,
+      category: category,
+      description: description,
+      amount: amount
+     
+    })
+      .then(function (data) {
+        window.location.replace(data);
+        console.log("test2");
+        // If there's an error, handle it by throwing up a bootstrap alert
+      })
+      .fail(handleLoginErr);
+  }
+
+  function handleLoginErr(err) {
+    $("#alert .msg").text(err.responseJSON);
+    $("#alert").fadeIn(500);
   }
 });

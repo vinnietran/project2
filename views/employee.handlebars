@@ -27,6 +27,8 @@
         <h1 class="display-4">Finding work is easy</h1>
         <p class="lead">Look through the map to find a job that fits you</p>
         <hr>
+      
+            
         
       </div>
     </div>
@@ -36,13 +38,49 @@
 
 
   <div class="block-right">
+ <div class="container">
+    
+    <div class="row">
 
-    <div id="map"></div>
+      <div class="col-lg-12">
+
+        <div class="card mb-4">
+          <div class="card-header">
+           Category Search
+          </div>
+          <div class="card-body">
+            <input type="text" id="category-search" class="form-control">
+            <br>
+            <div class="text-right">
+              <button type="submit" class="btn btn-primary btn-md" id="search-btn">
+                <span class="fa fa-search"></span> Search for your job</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+
+      <div class="col-lg-12">
+
+        <div class="card">
+          <div class="card-header">
+            Job Details
+          </div>
+          <div class="card-body" id="well-section">
+            <!-- Content will go in here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   </div>
 
 
-  <script>
+  {{!-- <script>
     // Note: This example requires that you consent to location sharing when
     // prompted by your browser. If you see the error "The Geolocation service
     // failed.", it means you probably did not give permission for the browser to
@@ -88,17 +126,58 @@
    
 
   </script>
-  
+   --}}
   </div>
 
  <script>
-			$(document).ready(function() {  // ADD CUSTOM NAME
-  // This file just does a GET request to figure out which user is logged in
-  // and updates the HTML on the page
-  $.get("/api/user_data").then(function(data) {
-    $(".member-name").text(data.email);
+   getList();
+   function getList() {
+    $.get("/api/jobs", function(data) {
+      jobs = data;
+      ;
+    });
+  }
+
+		$("#search-btn").on("click", function() {
+  // save the character they typed into the character-search input
+  var searchedCategory = $("#category-search")
+    .val()
+    .trim();
+
+  // Using a RegEx Pattern to remove spaces from searchedCharacter
+  // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+  searchedCategory = searchedCategory.replace(/\s+/g, "").toLowerCase();
+
+  // run an AJAX GET-request for our servers api,
+  // including the user's character in the url
+  $.get("/api/" + searchedCategory, function(data) {
+    // log the data to our console
+    console.log(data);
+    // empty to well-section before adding new content
+    $("#well-section").empty();
+    // if the data is not there, then return an error message
+    if (!data) {
+      $("#well-section").append("<h2> No data found. </h2>");
+    }
+    else {
+      // otherwise
+      console.log(jobs.name);
+      console.log("test if else works");
+      console.log(this.name);
+      console.log(data.this.name);
+      console.log(this.data.name)
+      // append the character name
+      $("#well-section").append("<h2 Employer Name>" + data.name + "</h2>");
+      // the role
+      $("#well-section").append("<h3>Category: " + data.category + "</h3>");
+      // the age
+      $("#well-section").append("<h3>Description of jon: " + data.description + "</h3>");
+      // and the force points
+      $("#well-section").append("<h3>Price for completion: " + data.amount + "</h3>");
+    }
   });
 });
+
 
 		</script>
 

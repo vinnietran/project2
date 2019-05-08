@@ -1,11 +1,14 @@
 module.exports = function(sequelize, DataTypes) {
   var jobs = sequelize.define("jobs", {
-    // The email cannot be null, and must be a proper email before creation
-    //name: DataTypes.STRING(100),
-    // postedby: {
-    //   type: DataTypes.STRING,
-    //   //allowNull: false
-    // },
+
+    routeName: DataTypes.STRING,
+
+    name: {
+
+      type: DataTypes.STRING,
+      allowNull:false
+    
+    },
     category: {
       type: DataTypes.STRING,
       allowNull: false
@@ -19,19 +22,19 @@ module.exports = function(sequelize, DataTypes) {
     //   allowNull: false,
     //   defaultValue: false
     // },
-    acceptedby: {
-      //FK of USERS.id
-      type: DataTypes.STRING
-    },
+    // acceptedby: {
+    //   //FK of USERS.id
+    //   type: DataTypes.STRING
+    // },
     amount: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false
-    },
-    iscomplete: {
-      type: DataTypes.BOOLEAN,
-      allowNull: true,
-      defaultValue: false
     }
+    // iscomplete: {
+    //   type: DataTypes.BOOLEAN,
+    //   allowNull: true,
+    //   defaultValue: false
+    // }
   });
   // jobs.associate = function(models) {
   //   // We're saying that a Post should belong to an Author
@@ -42,5 +45,6 @@ module.exports = function(sequelize, DataTypes) {
   //     }
   //   });
   // };
+  jobs.sync();
   return jobs;
 };

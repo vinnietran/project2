@@ -1,3 +1,6 @@
 DROP DATABASE IF EXISTS exampledb;
 CREATE DATABASE exampledb;
 
+
+DROP DATABASE IF EXISTS todolistdb;
+CREATE DATABASE todolistdb;
