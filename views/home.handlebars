@@ -1,176 +1,53 @@
+<body>
 
 
-   <style>
-     @import url('https://fonts.googleapis.com/css?family=Ubuntu');
-
-* {
-	box-sizing: border-box;
-}
-
-body {
+  <link rel="stylesheet" type="text/css" href="styles/homeStyle.css">
 
 
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	font-family: 'Ubuntu', sans-serif;
-	
-	margin: -20px 0 50px;
-}
+  <div class="container">
+    <div class="section hpanel leftpan">
+      <div class="homeTag">
+        <h3>Home <i class="fas fa-home"></i>  </h3>
+      </div>
+      <div class="background-img">
+        <div class="content-area">
+          <br>
+          <h2>Need help with a job?</h2>
+          <div class="btn-area">
 
-}
-html {
-	font-size: 62.5%;
-}
-.noscroll {
-	overflow: hidden
-}
-body {
-	font-size: 1.5em;
-	line-height: 1.6;
-	font-weight: 400;
-	font-family: 'Poppins', sans-serif;
-	color: #555555;
-	overflow-x: hidden;
-}
-img {
-	height: auto;
-}
-.hpanel {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	height: 100%;
-	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
-	color: #fff
-}
-.leftpan {
-	left: -4%;
-	width: 60%;
-	-webkit-transform: skew(-8deg);
-	-moz-transform: skew(-8deg);
-	-o-transform: skew(-8deg);
-}
-.leftpan .background-img {
-	background-image: url("https://www.sarahlawrence.edu/cdi/public-events/symposium/toddler-puddle-in-forest.jpg");
-}
-.rightpan {
-	right: -4%;
-	width: 59%;
-	-webkit-transform: skew(8deg);
-	-moz-transform: skew(8deg);
-	-o-transform: skew(8deg);
-}
-.rightpan .background-img {
-	background-image: url("https://cdn.pixabay.com/photo/2016/02/19/11/48/boy-1209964_960_720.jpg");
-}
-.background-img {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
+            <a href="./employer">ENTER</a> </div>
+        </div>
 
-}
-.leftpan .content-area {
-	-webkit-transform: skew(8deg);
-	-moz-transform: skew(8deg);
-	-o-transform: skew(8deg);
-	
-}
-.rightpan .content-area {-webkit-transform: skew(-8deg);
-	-moz-transform: skew(-8deg);
-	-o-transform: skew(-8deg);}
-.content-area {
-	text-align: center;
-	margin: 20vh auto;
-	width: 350px;
-   
-    color: white;
-  
-}
-.content-area h2 {
-	font-size: 2.8rem;
-	margin-bottom: 50px
-}
-.btn-area {
-	margin-top: 50px
-}
-.btn-area a {
-	padding: 13px 0;
-	width: 70%;
-	text-align: center;
-	background-color: #fff;
-	border-radius: 50px;
-	display: inline-block;
-	font-size: 18px;
-	font-weight: 500;
-	text-decoration: none;
-	color: #000;
-	letter-spacing: 1px;
-}
+      </div>
 
-@media only screen and (max-width : 600px) {
-}
-
-
-
-
-
-   </style>
-       <body>
-
-
-
-
-           
-<div class="container">
-           <div class="section hpanel leftpan">
-               <div class="homeTag">
-             <h3>Home <i class="fas fa-home"></i></h3> 
-           </div>
-  <div class="background-img">
-    <div class="content-area">
-        <br>
-      <h2>Need help with a job?</h2>
-      <div class="btn-area">
-
-         <a href="./employer">ENTER</a> </div>
     </div>
 
-  </div>
+    <div class="section hpanel rightpan">
+      <div class="background-img">
+        <div class="content-area">
+          <br>
+          <h2>Welcome <span class="member-name"></span></h2
+          <h2>Looking to help?</h2>
+          <div class="btn-area">
 
-</div>
+            <a href="./employee">ENTER</a> </div>
+        </div>
 
-<div class="section hpanel rightpan">
-  <div class="background-img">
-    <div class="content-area">
-        <br>
-      <h2>Looking to help?</h2> 
-      <div class="btn-area">
+      </div>
 
-        <a href="./employee">ENTER</a> </div>
     </div>
-
-  </div>
-
-</div>
     <script>
-			$(document).ready(function() {  // ADD CUSTOM NAME
+     $(document).ready(function() {
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
   $.get("/api/user_data").then(function(data) {
-    $(".member-name").text(data.email);
+    $(".member-name").text(data.name);
   });
 });
 
-		</script>
-   
-    </body>
+
+    </script>
+
+</body>
+
 </html>
