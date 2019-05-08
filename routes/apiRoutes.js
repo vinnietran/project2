@@ -36,6 +36,12 @@ module.exports = function(app) {
       });
   });
 
+  app.post("/api/jobs", function(req, res) {
+    db.Post.create(req.body).then(function(dbJobs) {
+      res.json(dbJobs);
+    });
+  });
+
   // Route for logging user out
   app.get("/logout", function(req, res) {
     req.logout();
