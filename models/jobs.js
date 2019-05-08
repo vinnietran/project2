@@ -1,12 +1,13 @@
 module.exports = function(sequelize, DataTypes) {
   var jobs = sequelize.define("jobs", {
 
-    routeName: DataTypes.STRING,
+    
 
     name: {
 
       type: DataTypes.STRING,
       allowNull:false
+     
     
     },
     category: {
@@ -45,6 +46,6 @@ module.exports = function(sequelize, DataTypes) {
   //     }
   //   });
   // };
-  jobs.sync();
+  
   return jobs;
 };

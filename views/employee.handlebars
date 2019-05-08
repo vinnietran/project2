@@ -8,7 +8,7 @@
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIYLypbzuWg4gxZLmQKjsBJf0i1pAo4dk&callback=initMap"
     type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" href="styles/employerStyle.css">
+    <link rel="stylesheet" type="text/css" href="styles/employeeStyle.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   
 </head>
@@ -27,18 +27,7 @@
         <h1 class="display-4">Finding work is easy</h1>
         <p class="lead">Look through the map to find a job that fits you</p>
         <hr>
-      
-            
-        
-      </div>
-    </div>
-
-  </div>
-
-
-
-  <div class="block-right">
- <div class="container">
+   
     
     <div class="row">
 
@@ -48,8 +37,13 @@
           <div class="card-header">
            Category Search
           </div>
-          <div class="card-body">
-            <input type="text" id="category-search" class="form-control">
+          <div class="card-body" >
+           
+            <select class="form-control" id="category-search">
+            <option>Manual Labor</option>
+            <option>Maintainence</option>
+            <option>Miscellaneous</option>
+          </select>
             <br>
             <div class="text-right">
               <button type="submit" class="btn btn-primary btn-md" id="search-btn">
@@ -60,6 +54,17 @@
         </div>
       </div>
     </div>
+            
+        
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <div class="block-right">
+    <div class="container" id="banner">
     <div class="row">
 
       <div class="col-lg-12">
@@ -130,14 +135,7 @@
   </div>
 
  <script>
-   getList();
-   function getList() {
-    $.get("/api/jobs", function(data) {
-      jobs = data;
-      ;
-    });
-  }
-
+  
 		$("#search-btn").on("click", function() {
   // save the character they typed into the character-search input
   var searchedCategory = $("#category-search")
@@ -146,13 +144,14 @@
 
   // Using a RegEx Pattern to remove spaces from searchedCharacter
   // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-  searchedCategory = searchedCategory.replace(/\s+/g, "").toLowerCase();
+  
 
   // run an AJAX GET-request for our servers api,
   // including the user's character in the url
   $.get("/api/" + searchedCategory, function(data) {
     // log the data to our console
     console.log(data);
+    console.log(name);
     // empty to well-section before adding new content
     $("#well-section").empty();
     // if the data is not there, then return an error message
@@ -161,17 +160,16 @@
     }
     else {
       // otherwise
-      console.log(jobs.name);
+      
       console.log("test if else works");
-      console.log(this.name);
-      console.log(data.this.name);
-      console.log(this.data.name)
+ 
+    
       // append the character name
       $("#well-section").append("<h2 Employer Name>" + data.name + "</h2>");
       // the role
       $("#well-section").append("<h3>Category: " + data.category + "</h3>");
       // the age
-      $("#well-section").append("<h3>Description of jon: " + data.description + "</h3>");
+      $("#well-section").append("<h3>Description of job: " + data.description + "</h3>");
       // and the force points
       $("#well-section").append("<h3>Price for completion: " + data.amount + "</h3>");
     }
@@ -187,3 +185,48 @@
 </body>
 
 </html>
+
+		{{!-- $("#search-btn").on("click", function() {
+  // save the character they typed into the character-search input
+  var searchedCategory = $("#category-search")
+    .val()
+    .trim();
+
+  // Using a RegEx Pattern to remove spaces from searchedCharacter
+  // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+  searchedCategory = searchedCategory.replace(/\s+/g, "").toLowerCase();
+
+  // run an AJAX GET-request for our servers api,
+  // including the user's character in the url
+  $.get("/api/" + searchedCategory, function(data) {
+    // log the data to our console
+    console.log(data);
+    console.log(name);
+    // empty to well-section before adding new content
+    
+// for each character that our server sends us back
+  for (var i = 0; i < data.length; i++) {
+    // create a parent div for the oncoming elements
+    var wellSection = $("<div>");
+    // add a class to this div: 'well'
+    wellSection.addClass("well");
+    // add an id to the well to mark which well it is
+    wellSection.attr("id", "character-well-" + i);
+    // append the well to the well section
+    $("#well-section").append(wellSection);
+
+    // Now add all of our character data to the well we just placed on the page
+console.log(data[i].name);
+console.log(data[i].amount);
+    // make the name an h2,
+    $("#character-well-" + i).append("<h2>" + data[i].name + "</h2>");
+    // the role an h3,
+    $("#character-well-" + i).append("<h3>Role: " + data[i].category + "</h4>");
+    // the age an h3,
+    $("#character-well-" + i).append("<h3>Age: " + data[i].description + "</h4>");
+    // and the forcepoints an h3.
+    $("#character-well-" + i).append("<h3>Price for job: " + data[i].amount + "</h4>");
+  }
+});
+
+    }); --}}

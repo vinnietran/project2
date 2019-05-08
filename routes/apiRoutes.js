@@ -15,13 +15,29 @@ module.exports = function(app) {
     res.json("/home");
   });
 
+  app.get("/api/jobs", function(req, res) {
+    // findAll returns all entries for a table when used with no options
+    db.jobs.findAll({}).then(function(dbjobs) {
+      // We have access to the todos as an argument inside of the callback function
+      res.json(dbjobs);
+    });
+  });
+
+
+  app.get("/api/users", function(req, res) {
+    // findAll returns all entries for a table when used with no options
+    db.users.findAll({}).then(function(dbusers) {
+      // We have access to the todos as an argument inside of the callback function
+      res.json(dbusers);
+    });
+  });
 
   
-  app.get("/api/:jobs?", function(req, res) {
+  app.get("/api/:category?", function(req, res) {
     if (req.params.category) {
       // Display the JSON for ONLY that character.
     
-      jobs.findOne({
+      db.jobs.findOne({
         where: {
           category: req.params.category
         }
@@ -29,7 +45,7 @@ module.exports = function(app) {
         return res.json(result);
       });
     } else {
-      jobs.findAll().then(function(result) {
+      db.jobs.findAll().then(function(result) {
         return res.json(result);
       });
     }

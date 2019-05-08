@@ -51,8 +51,9 @@ img {
 	-moz-transform: skew(-8deg);
 	-o-transform: skew(-8deg);
 }
+
 .leftpan .background-img {
-	background-image: url("https://www.sarahlawrence.edu/cdi/public-events/symposium/toddler-puddle-in-forest.jpg");
+	background-image: url("https://images.unsplash.com/photo-1477239439998-839196943351?ixlib=rb-1.2.1&w=1000&q=80");
 }
 .rightpan {
 	right: -4%;
@@ -97,7 +98,12 @@ img {
 	margin-bottom: 50px
 }
 .btn-area {
-	margin-top: 50px
+	margin-top: 30px;
+	opacity: 0.8;
+}
+
+.btn-area:hover{
+	opacity: 0.9;
 }
 .btn-area a {
 	padding: 13px 0;
@@ -113,6 +119,9 @@ img {
 	letter-spacing: 1px;
 }
 
+#secondBut{
+	margin-top: 300px;
+}
 @media only screen and (max-width : 600px) {
 }
 

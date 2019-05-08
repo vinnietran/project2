@@ -24,11 +24,11 @@
 
     <div class="section hpanel rightpan">
       <div class="background-img">
-        <div class="content-area">
+        <div class="content-area" id="secondBut">
           <br>
-          <h2>Welcome <span class="member-name"></span></h2
+         
           <h2>Looking to help?</h2>
-          <div class="btn-area">
+          <div class="btn-area" >
 
             <a href="./employee">ENTER</a> </div>
         </div>
@@ -40,8 +40,12 @@
      $(document).ready(function() {
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
-  $.get("/api/user_data").then(function(data) {
-    $(".member-name").text(data.name);
+  $.get("/api/users").then(function(users) {
+    $(".member-name").text(users.name);
+    console.log(users.name);
+    console.log("works");
+  
+    console.log(users.name);
   });
 });
 
