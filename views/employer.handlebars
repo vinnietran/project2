@@ -11,65 +11,8 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <style>
-    /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-    #map {
-      height: 100%;
-    }
-
-    /* Optional: Makes the sample page fill the window. */
-    html,
-    body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-
-    .block-left {
-      width: 20%;
-      height: 100vh;
-      background-image: url("https://www.pixelstalk.net/wp-content/uploads/2016/08/Cool-nature-photos-desktop-background-620x472.jpg");
-      float: left;
-      background-size: cover;
-    }
-
-    .block-right {
-      width: 100%;
-      height: 100vh;
-
-    }
-
-    /* MEDIA QUERIES FOR 545px <= Resolutions */
-
-    @media (max-width:545px) {
-      .block-left {
-        display: block;
-        width: 20%;
-      }
-
-      .block-right {
-        display: block;
-        width: 80%;
-      }
-    }
-
-    #banner {
-      margin-top: 10px;
-      margin-left: 10px;
-      margin-right: 10px;
-      opacity: 0.8;
-
-    }
-
-    #banner:hover {
-      opacity: 0.9;
-    }
-
-    .btn {
-      text-align: center;
-    }
-  </style>
+  <link rel="stylesheet" type="text/css" href="styles/employerStyle.css">
+  <script type="text/javascript" src="/js/employer.js"></script>
 </head>
 
 <body>
@@ -84,16 +27,18 @@
         <a href="/"> <i class="fas fa-home fa-3x"></i></a>
         <hr>
         <h1 class="display-4">Finding help is easy</h1>
+        <h2> Welcome ..<span class="member-name"></span></2>
         <p class="lead">Click the map to add a pin and fill out the form</p>
+        
         <hr>
-        <form id="job-form">
+        <form class="jobCreate">
           <div class="form-group">
             <label for="formGroupExampleInput">Name</label>
             <input type="text" class="form-control" id="name" placeholder="Please enter your name">
           </div>
           <div class="form-group">
           <label for="formGroupExampleInput2">Choose a Job Category</label>
-          <select class="form-control" id="job-type">
+          <select class="form-control" id="jobCategory">
             <option>Manual Labor</option>
             <option>Maintainence</option>
             <option>Miscellaneous</option>
@@ -101,7 +46,7 @@
           </div>
           <div class="form-group">
             <label for="formGroupExampleInput2">Job Description</label>
-            <input type="text" class="form-control" id="job" placeholder="Please fill out">
+            <input type="text" class="form-control" id="jobDescription" placeholder="Please fill out">
           </div>
           {{!-- Vinnie - Adding a new text box for price --}}
           <label for="formGroupExampleInput2">Amount To Be Paid</label>
@@ -118,7 +63,7 @@
               I understand that this job description and price is correct.
           </div>
           <br>
-          <button type="button" class="btn btn-secondary btn-lg" onclick="submitData()">Submit Job</button>
+          <button type="submit" class="btn btn-secondary btn-lg">Submit Job</button>
         </form>
       </div>
     </div>
@@ -132,29 +77,7 @@
     <div id="map"></div>
 
   </div>
-  <script>
-    // for inputs from form
-
-
-
-
-    function submitData() {
-      event.preventDefault();
-      var name = document.getElementById("name");
-      var jobDescription = document.getElementById("job");
-      if (document.getElementById("defaultCheck1").checked === true) {
-        var confirmJob = true;
-        //post to sql  ---  post();
-      }
-      else (
-        confirmJob = false
-
-      )
-
-      console.log("name:  " + name.value + "  job description:  " + jobDescription.value + "   confirm check =  " + confirmJob);
-    }
-
-  </script>
+  
 
   <script>
     // for google map api
@@ -204,16 +127,7 @@
   </div>
 
 
-	 <script>
-			$(document).ready(function() {  // ADD CUSTOM NAME
-  // This file just does a GET request to figure out which user is logged in
-  // and updates the HTML on the page
-  $.get("/api/user_data").then(function(data) {
-    $(".member-name").text(data.email);
-  });
-});
 
-		</script>
 
 
 

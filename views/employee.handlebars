@@ -8,64 +8,9 @@
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIYLypbzuWg4gxZLmQKjsBJf0i1pAo4dk&callback=initMap"
     type="text/javascript"></script>
-    
+    <link rel="stylesheet" type="text/css" href="styles/employeeStyle.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <style>
-    /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-    #map {
-      height: 100%;
-    }
-
-    /* Optional: Makes the sample page fill the window. */
-    html,
-    body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-
-    .block-left {
-      width: 20%;
-      height: 100vh;
-      background-image: url("https://www.pixelstalk.net/wp-content/uploads/2016/08/Cool-nature-photos-desktop-background-620x472.jpg");
-      float: left;
-      background-size: cover;
-    }
-
-    .block-right {
-      width: 100%;
-      height: 100vh;
-
-    }
-
-    /* MEDIA QUERIES FOR 545px <= Resolutions */
-
-    @media (max-width:545px) {
-      .block-left {
-        display: block;
-        width: 20%;
-      }
-
-      .block-right {
-        display: block;
-        width: 80%;
-      }
-    }
-    #banner{
-margin-top: 20px;
-margin-left: 10px;
-margin-right: 10px;
-opacity: 0.8;
-
-    }
-    #banner:hover {
-      opacity:0.9;
-    }
-  .btn {
-    text-align: center;
-  }
-  </style>
+  
 </head>
 
 <body>
@@ -82,6 +27,34 @@ opacity: 0.8;
         <h1 class="display-4">Finding work is easy</h1>
         <p class="lead">Look through the map to find a job that fits you</p>
         <hr>
+   
+    
+    <div class="row">
+
+      <div class="col-lg-12">
+
+        <div class="card mb-4">
+          <div class="card-header">
+           Category Search
+          </div>
+          <div class="card-body" >
+           
+            <select class="form-control" id="category-search">
+            <option>Manual Labor</option>
+            <option>Maintainence</option>
+            <option>Miscellaneous</option>
+          </select>
+            <br>
+            <div class="text-right">
+              <button type="submit" class="btn btn-primary btn-md" id="search-btn">
+                <span class="fa fa-search"></span> Search for your job</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+            
         
       </div>
     </div>
@@ -91,13 +64,28 @@ opacity: 0.8;
 
 
   <div class="block-right">
+    <div class="container" id="banner">
+    <div class="row">
 
-    <div id="map"></div>
+      <div class="col-lg-12">
+
+        <div class="card">
+          <div class="card-header">
+            Job Details
+          </div>
+          <div class="card-body" id="well-section">
+            <!-- Content will go in here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   </div>
 
 
-  <script>
+  {{!-- <script>
     // Note: This example requires that you consent to location sharing when
     // prompted by your browser. If you see the error "The Geolocation service
     // failed.", it means you probably did not give permission for the browser to
@@ -143,17 +131,51 @@ opacity: 0.8;
    
 
   </script>
-  
+   --}}
   </div>
 
  <script>
-			$(document).ready(function() {  // ADD CUSTOM NAME
-  // This file just does a GET request to figure out which user is logged in
-  // and updates the HTML on the page
-  $.get("/api/user_data").then(function(data) {
-    $(".member-name").text(data.email);
+  
+		$("#search-btn").on("click", function() {
+  // save the character they typed into the character-search input
+  var searchedCategory = $("#category-search")
+    .val()
+    .trim();
+
+  // Using a RegEx Pattern to remove spaces from searchedCharacter
+  // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+  
+
+  // run an AJAX GET-request for our servers api,
+  // including the user's character in the url
+  $.get("/api/" + searchedCategory, function(data) {
+    // log the data to our console
+    console.log(data);
+    console.log(name);
+    // empty to well-section before adding new content
+    $("#well-section").empty();
+    // if the data is not there, then return an error message
+    if (!data) {
+      $("#well-section").append("<h2> No data found. </h2>");
+    }
+    else {
+      // otherwise
+      
+      console.log("test if else works");
+ 
+    
+      // append the character name
+      $("#well-section").append("<h2 Employer Name>" + data.name + "</h2>");
+      // the role
+      $("#well-section").append("<h3>Category: " + data.category + "</h3>");
+      // the age
+      $("#well-section").append("<h3>Description of job: " + data.description + "</h3>");
+      // and the force points
+      $("#well-section").append("<h3>Price for completion: " + data.amount + "</h3>");
+    }
   });
 });
+
 
 		</script>
 
@@ -163,3 +185,48 @@ opacity: 0.8;
 </body>
 
 </html>
+
+		{{!-- $("#search-btn").on("click", function() {
+  // save the character they typed into the character-search input
+  var searchedCategory = $("#category-search")
+    .val()
+    .trim();
+
+  // Using a RegEx Pattern to remove spaces from searchedCharacter
+  // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+  searchedCategory = searchedCategory.replace(/\s+/g, "").toLowerCase();
+
+  // run an AJAX GET-request for our servers api,
+  // including the user's character in the url
+  $.get("/api/" + searchedCategory, function(data) {
+    // log the data to our console
+    console.log(data);
+    console.log(name);
+    // empty to well-section before adding new content
+    
+// for each character that our server sends us back
+  for (var i = 0; i < data.length; i++) {
+    // create a parent div for the oncoming elements
+    var wellSection = $("<div>");
+    // add a class to this div: 'well'
+    wellSection.addClass("well");
+    // add an id to the well to mark which well it is
+    wellSection.attr("id", "character-well-" + i);
+    // append the well to the well section
+    $("#well-section").append(wellSection);
+
+    // Now add all of our character data to the well we just placed on the page
+console.log(data[i].name);
+console.log(data[i].amount);
+    // make the name an h2,
+    $("#character-well-" + i).append("<h2>" + data[i].name + "</h2>");
+    // the role an h3,
+    $("#character-well-" + i).append("<h3>Role: " + data[i].category + "</h4>");
+    // the age an h3,
+    $("#character-well-" + i).append("<h3>Age: " + data[i].description + "</h4>");
+    // and the forcepoints an h3.
+    $("#character-well-" + i).append("<h3>Price for job: " + data[i].amount + "</h4>");
+  }
+});
+
+    }); --}}

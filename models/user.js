@@ -34,5 +34,13 @@ module.exports = function(sequelize, DataTypes) {
       null
     );
   });
+  // users.associate = function(models) {
+  //   // Associating Author with Posts
+  //   // When an Author is deleted, also delete any associated Posts
+  //   users.hasMany(models.jobs, {
+  //     onDelete: "cascade"
+  //   });
+  // };
+
   return users;
 };

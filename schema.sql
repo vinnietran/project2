@@ -1,0 +1,4 @@
+DROP DATABASE IF EXISTS taskscandb;
+CREATE DATABASE taskscandb;
+
+

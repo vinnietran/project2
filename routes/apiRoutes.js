@@ -15,9 +15,45 @@ module.exports = function(app) {
     res.json("/home");
   });
 
-  // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
-  // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
-  // otherwise send back an error
+  app.get("/api/jobs", function(req, res) {
+    // findAll returns all entries for a table when used with no options
+    db.jobs.findAll({}).then(function(dbjobs) {
+      // We have access to the todos as an argument inside of the callback function
+      res.json(dbjobs);
+    });
+  });
+
+
+  app.get("/api/users", function(req, res) {
+    // findAll returns all entries for a table when used with no options
+    db.users.findAll({}).then(function(dbusers) {
+      // We have access to the todos as an argument inside of the callback function
+      res.json(dbusers);
+    });
+  });
+
+  
+  app.get("/api/:category?", function(req, res) {
+    if (req.params.category) {
+      // Display the JSON for ONLY that character.
+    
+      db.jobs.findOne({
+        where: {
+          category: req.params.category
+        }
+      }).then(function(result) {
+        return res.json(result);
+      });
+    } else {
+      db.jobs.findAll().then(function(result) {
+        return res.json(result);
+      });
+    }
+  });
+
+
+
+
   app.post("/api/signup", function(req, res) {
     console.log(req.body);
     db.users
@@ -35,6 +71,26 @@ module.exports = function(app) {
         // res.status(422).json(err.errors[0].message);
       });
   });
+  app.post("/api/jobs", function(req, res) {
+    console.log(req.body);
+    db.jobs
+      .create({
+        name: req.body.name,
+        category: req.body.category,
+        description: req.body.description,
+        amount: req.body.amount
+      
+      })
+      .then(function() {
+        res.redirect(307, "/");
+      })
+      .catch(function(err) {
+        console.log(err);
+        res.json(err);
+        // res.status(422).json(err.errors[0].message);
+      });
+  });
+ 
 
   // Route for logging user out
   app.get("/logout", function(req, res) {
@@ -51,13 +107,15 @@ module.exports = function(app) {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
-        name: req.users.email,
+        name: req.users.name,
         email: req.users.email,
         id: req.users.id
       });
     }
   });
 };
+
+
 
 // var db = require("../models");
 // var passport = require("../config/passport");

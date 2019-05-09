@@ -34,6 +34,7 @@ $(document).ready(function() {
         // If there's an error, log the error
       })
       .fail(function(err) {
+        alert("Wrong password or email - Please verify and try again");
         console.log(err);
       });
   }
