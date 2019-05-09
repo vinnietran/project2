@@ -1,7 +1,11 @@
 {
   "development": {
     "username": "root",
+
     "password": "MagicalPanda510",
+=======
+    "password": "farmboy1",
+
     "database": "taskscandb",
     "host": "localhost",
     "dialect": "mysql"
