@@ -55,3 +55,81 @@ $(document).ready(function () {
     $("#alert").fadeIn(500);
   }
 });
+
+$(document).ready(function () {
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function (event) {
+      // Make sure this.hash has a value before overriding default behavior
+      if (this.hash !== "") {
+          // Prevent default anchor click behavior
+          event.preventDefault();
+
+          // Store hash
+          var hash = this.hash;
+
+          // Using jQuery's animate() method to add smooth page scroll
+          // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+          $('html, body').animate({
+              scrollTop: $(hash).offset().top
+          }, 900, function () {
+
+              // Add hash (#) to URL when done scrolling (default click behavior)
+              window.location.hash = hash;
+          });
+      } // End if
+  });
+
+  $(window).scroll(function () {
+      $(".slideanim").each(function () {
+          var pos = $(this).offset().top;
+
+          var winTop = $(window).scrollTop();
+          if (pos < winTop + 600) {
+              $(this).addClass("slide");
+          }
+      });
+  });
+
+})
+// Note: This example requires that you consent to location sharing when
+// prompted by your browser. If you see the error "The Geolocation service
+// failed.", it means you probably did not give permission for the browser to
+// locate you.
+var map, infoWindow;
+function initMap() {
+	map = new google.maps.Map(document.getElementById('map'), {
+		center: { lat: -34.397, lng: 150.644 },
+		zoom: 12
+	});
+	infoWindow = new google.maps.InfoWindow;
+
+	// Try HTML5 geolocation.
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(function (position) {
+			var pos = {
+				lat: position.coords.latitude,
+				lng: position.coords.longitude
+			};
+
+			infoWindow.setPosition(pos);
+			infoWindow.setContent('We found you, please follow the form to add your job.');
+			infoWindow.open(map);
+			map.setCenter(pos);
+		}, function () {
+			handleLocationError(true, infoWindow, map.getCenter());
+		});
+	} else {
+		// Browser doesn't support Geolocation
+		handleLocationError(false, infoWindow, map.getCenter());
+	}
+	 
+	
+}
+
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+	infoWindow.setPosition(pos);
+	infoWindow.setContent(browserHasGeolocation ?
+		'Error: The Geolocation service failed.' :
+		'Error: Your browser doesn\'t support geolocation.');
+	infoWindow.open(map);
+}
