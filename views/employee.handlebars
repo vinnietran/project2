@@ -42,13 +42,24 @@
 
       <!--logo-->
       <div class="nav-wrapper container">
-        <a id="logo-container" href="#myPage" class="brand-logo">taskScan <i class="fas fa-angle-double-right"></i></a>
+        <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button> -->
+        <a id="logo-container" href="#myPage" class="brand-logo">taskScan
+          <i class="fas fa-angle-double-right"></i>
+        </a>
         <ul class="right hide-on-med-and-down">
           <li>
-            <a href="#about">Home <i class="fas fa-home"></i> </a>
+            <a href="./">Home
+              <i class="fas fa-home"></i>
+            </a>
           </li>
           <li>
-            <a href="#services">Select Service <i class="fas fa-hand-pointer"></i></a>
+            <a href="./home">Select Service
+              <i class="fas fa-hand-pointer"></i>
+            </a>
           </li>
 
 
@@ -65,6 +76,7 @@
       </div>
     </nav>
   </div>
+
 
   <!--forum-->
   <div id="index-banner" class="parallax-container">
@@ -105,22 +117,27 @@
         </div>
 
         <div class="row">
-        <div class="row">
-          <button id="search-btn" class="btn-large">Find My Job!</button>
-          <br>
-          <br>
-          <br>
-          <table class="highlight" id='jobtable'>
-            <thead>
-              <tr>
-                <th>Employer Name</th>
-                <th>Category</th>
-                <th>Description</th>
-                <th>Amount</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
+          <div class="row">
+            <button id="search-btn" class="btn-large">Find My Job!</button>
+            <br>
+            <br>
+            <br>
+            <form class="jobUpdate">
+              <table class="highlight" id='jobtable'>
+                <thead>
+                  <tr>
+                    <th>Employer Name</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Amount</th>
+                    <th> Select</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </form>
           </div>
         </div>
       </div>
@@ -322,16 +339,41 @@
             $("<td>").text(data[i].name),
             $("<td>").text(data[i].category),
             $("<td>").text(data[i].description),
+            $("<td>").text(data[i].date),
+            $("<td>").text(data[i].time),
             $("<td>").text("$" + data[i].amount),
+            $("<td>").append("<button id='selectJob' " + "type='submit' " + "class='selectJob'" + "class='btn-large'> " + "Select this Job! " + "</button>")
           );
           $("#jobtable").append(newRow);
+          console.log(data);
         }
 
 
       }
     });
   });
+  ///////////////////////////////
 
+
+  $(document).ready(function () {
+
+
+
+    var jobUpdate = $("form.jobUpdate");
+
+
+
+    jobUpdate.on("submit", function (event) {
+
+      function updateJobs(jobs) {
+        $.ajax({
+          method: "PUT",
+          url: "/api/jobs",
+          recievedResponse: "yes",
+        }).then(getjobs);
+      }
+    });
+  });
 
 </script>
 

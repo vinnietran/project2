@@ -37,9 +37,13 @@ module.exports = function(sequelize, DataTypes) {
     amount: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false
+    },
+
+    recievedResponse: {
+      type: DataTypes.STRING,
+      allowNull: true
     }
 
-    // }
   });
   // jobs.associate = function(models) {
   //   // We're saying that a Post should belong to an Author
