@@ -15,6 +15,25 @@ module.exports = function(app) {
     res.json("/home");
   });
 
+
+  
+  app.put("/api/jobs", function(req, res) {
+    // Update takes in an object describing the properties we want to update, and
+    // we use where to describe which objects we want to update
+    db.jobs.update({
+      recievedResponse: req.body.recievedResponse
+  
+    }, {
+      where: {
+        id: req.body.id
+      }
+    }).then(function(dbjobs) {
+      res.json(dbjobs);
+    });
+  });
+
+
+
   app.get("/api/jobs", function(req, res) {
     // findAll returns all entries for a table when used with no options
     db.jobs.findAll({}).then(function(dbjobs) {
@@ -113,19 +132,7 @@ module.exports = function(app) {
   });
 };
 
- // DELETE route for deleting jobs. We can get the id of the job to be deleted from
-  // req.params.id
-  // app.delete("/api/jobs/:name", function(req, res) {
-  //   // We just have to specify which todo we want to destroy with "where"
-  //   db.jobs.destroy({
-  //     where: {
-  //       id: req.params.name
-  //     }
-  //   }).then(function(dbjobs) {
-  //     res.json(dbjobs);
-  //   });
 
-  // });
 
 // var db = require("../models");
 // var passport = require("../config/passport");

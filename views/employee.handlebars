@@ -122,20 +122,22 @@
             <br>
             <br>
             <br>
-            <table class="highlight" id='jobtable'>
-              <thead>
-                <tr>
-                  <th>Employer Name</th>
-                  <th>Category</th>
-                  <th>Description</th>
-                  <th>Date</th>
-                   <th>Time</th>
-                  <th>Amount</th>
-                  <th> Select</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
+            <form class="jobUpdate">
+              <table class="highlight" id='jobtable'>
+                <thead>
+                  <tr>
+                    <th>Employer Name</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Amount</th>
+                    <th> Select</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </form>
           </div>
         </div>
       </div>
@@ -340,19 +342,38 @@
             $("<td>").text(data[i].date),
             $("<td>").text(data[i].time),
             $("<td>").text("$" + data[i].amount),
-               $("<td>").append("<button id='selectJob' " +  "class='selectJob'" + "class='btn-large'> " + "Select this Job! " + "</button>")
+            $("<td>").append("<button id='selectJob' " + "type='submit' " + "class='selectJob'" + "class='btn-large'> " + "Select this Job! " + "</button>")
           );
           $("#jobtable").append(newRow);
           console.log(data);
-    }
+        }
 
 
       }
     });
   });
-   ///////////////////////////////
+  ///////////////////////////////
 
 
+  $(document).ready(function () {
+
+
+
+    var jobUpdate = $("form.jobUpdate");
+
+
+
+    jobUpdate.on("submit", function (event) {
+
+      function updateJobs(jobs) {
+        $.ajax({
+          method: "PUT",
+          url: "/api/jobs",
+          recievedResponse: "yes",
+        }).then(getjobs);
+      }
+    });
+  });
 
 </script>
 
@@ -365,5 +386,3 @@
 </body>
 
 </html>
-
-
