@@ -1,61 +1,57 @@
-$(document).ready(function () {
-  // Getting jQuery references to the post body, title, form, and author select
-  var dollarAmnt = $("#dollarAmount");
-  var jobDesc = $("#jobDescription");
-  var jobName = $("#name");
-  var category = $("#jobCategory");
+//given
+(function($){
+  $(function(){
 
-  var jobForm = $("form.jobCreate");
-  // Adding an event listener for when the form is submitted
+    $('.sidenav').sidenav();
+    $('.parallax').parallax();
 
-
-
-  // When the signup button is clicked, we validate the email and password are not blank
-  jobForm.on("submit", function (event) {
-    event.preventDefault();
-    console.log("job form Submitted");
-    var newJob = {
-
-      name: jobName.val(),
-      category: category.val(),
-      description: jobDesc.val(),
-      amount: dollarAmnt.val()
-    };
+  }); // end of document ready
+})(jQuery); // end of jQuery name space
 
 
-    // If we have an email and password, run the signUpUser function
-    createJobPost(newJob.name, newJob.category, newJob.description, newJob.amount);
-    jobName.val("");
-    category.val("");
-    jobDesc.val("");
-    dollarAmnt.val("");
-    console.log("Good User");
-  });
+//jobs modal
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.modal');
+  var instances = M.Modal.init(elems, options);
+});// Or with jQuery
 
-  // Does a post to the signup route. If successful, we are redirected to the members page
-  // Otherwise we log any errors
-  function createJobPost(name,category,description,amount) {
-    $.post("/api/jobs", {
-      name: name,
-      category: category,
-      description: description,
-      amount: amount
+
+//*******date
+$(document).ready(function(){
+  $('.modal').modal();
+});
      
-    })
-      .then(function (data) {
-        window.location.replace(data);
-        console.log("test2");
-        // If there's an error, handle it by throwing up a bootstrap alert
-      })
-      .fail(handleLoginErr);
-  }
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.datepicker');
+  var instances = M.Datepicker.init(elems, options);
+});// Or with jQuery
 
-  function handleLoginErr(err) {
-    $("#alert .msg").text(err.responseJSON);
-    $("#alert").fadeIn(500);
-  }
+$(document).ready(function(){
+  $('.datepicker').datepicker();
+});
+        
+//*******time
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.timepicker');
+  var instances = M.Timepicker.init(elems, options);
+});// Or with jQuery
+
+$(document).ready(function(){
+  $('.timepicker').timepicker();
 });
 
+//******carousel 
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.carousel');
+  var instances = M.Carousel.init(elems, options);
+});
+
+// Or with jQuery
+
+$(document).ready(function(){
+  $('.carousel').carousel();
+});
+    
 $(document).ready(function () {
   // Add smooth scrolling to all links in navbar + footer link
   $(".navbar a, footer a[href='#myPage']").on('click', function (event) {
@@ -91,45 +87,3 @@ $(document).ready(function () {
   });
 
 })
-// Note: This example requires that you consent to location sharing when
-// prompted by your browser. If you see the error "The Geolocation service
-// failed.", it means you probably did not give permission for the browser to
-// locate you.
-var map, infoWindow;
-function initMap() {
-	map = new google.maps.Map(document.getElementById('map'), {
-		center: { lat: -34.397, lng: 150.644 },
-		zoom: 12
-	});
-	infoWindow = new google.maps.InfoWindow;
-
-	// Try HTML5 geolocation.
-	if (navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(function (position) {
-			var pos = {
-				lat: position.coords.latitude,
-				lng: position.coords.longitude
-			};
-
-			infoWindow.setPosition(pos);
-			infoWindow.setContent('We found you, please follow the form to add your job.');
-			infoWindow.open(map);
-			map.setCenter(pos);
-		}, function () {
-			handleLocationError(true, infoWindow, map.getCenter());
-		});
-	} else {
-		// Browser doesn't support Geolocation
-		handleLocationError(false, infoWindow, map.getCenter());
-	}
-	 
-	
-}
-
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-	infoWindow.setPosition(pos);
-	infoWindow.setContent(browserHasGeolocation ?
-		'Error: The Geolocation service failed.' :
-		'Error: Your browser doesn\'t support geolocation.');
-	infoWindow.open(map);
-}

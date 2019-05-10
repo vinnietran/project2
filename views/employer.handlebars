@@ -1,318 +1,349 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Employer Page</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="styles/materialize.styles" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="styles/employerStyle.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
     crossorigin="anonymous">
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" type="text/css" href="styles/employerStyle.css" media="screen">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-
-  <!-- Bootstrap Javascript and jQuery library -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-    crossorigin="anonymous"></script>
-  <!-- Moment -->
-  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 </head>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
-  <!--nav bar-->
-  {{!-- <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
+
+  <!--nav-->
+  <div class="navbar-fixed">
+    <nav class="white" role="navigation">
+
+      <!--logo-->
+      <div class="nav-wrapper container">
+        <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#myPage">Logo</a>
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav navbar-right">
+        </button> -->
+        <a id="logo-container" href="#myPage" class="brand-logo">taskScan
+          <i class="fas fa-angle-double-right"></i>
+        </a>
+        <ul class="right hide-on-med-and-down">
           <li>
-            <a href="#about">About</a>
+            <a href="#about">Home
+              <i class="fas fa-home"></i>
+            </a>
           </li>
           <li>
-            <a href="#services">Services</a>
+            <a href="#services">Select Service
+              <i class="fas fa-hand-pointer"></i>
+            </a>
           </li>
+
+
+        </ul>
+
+        <ul id="nav-mobile" class="sidenav">
           <li>
-            <a href="#portfolio">Profile</a>
-          </li>
-          <li>
-            <a href="#payment">Payment Plan</a>
-          </li>
-          <li>
-            <a href="#contact">Contact</a>
+            <a href="#">Navbar Link</a>
           </li>
         </ul>
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger">
+          <i class="material-icons">menu</i>
+        </a>
       </div>
-    </div>
-  </nav> --}}
+    </nav>
+  </div>
 
-  <!--job forum-->
-  <div class="block-left">
-    {{!--
-    <div class="jumbotron jumbotron-fluid" id="banner"> --}}
+  <!--forum-->
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+
       <div class="container">
-        <a href="/">
-          <i class="fas fa-home fa-3x"></i>
-        </a>
-        <hr>
-        <h1 class="display-4">Finding help is easy</h1>
-        <!--????-->
-        <h2> Welcome ..
-          <span class="member-name"></span>
-        </h2>
-
-        <p class="lead">Click the map to add a pin and fill out the form</p>
-        <hr>
-
-        <!--Jobs forum-->
-        <form class="jobCreate">
-          <div class="form-group">
-            <label for="formGroupExampleInput">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Please enter your name">
-          </div>
-
-          <div class="form-group">
-            <label for="formGroupExampleInput2">Choose a Job Category</label>
-            <select class="form-control" id="jobCategory">
-              <option>Manual Labor</option>
-              <option>Maintainence</option>
-              <option>Miscellaneous</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="formGroupExampleInput2">Job Description</label>
-            <input type="text" class="form-control" id="jobDescription" placeholder="Please fill out">
-          </div>
-
-          <div class="form-group">
-            <label for="location">*Where</label>
-            <!-- <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number"
-                                                    maxlength="5" min="0" id="zipcode" name="location">  -->
-            <input type="number" class="form-control" maxlength="5" min="0" id="zipcode" name="zipcode" placeholder="Zipcode">
-          </div>
-          <div class="form-group">
-            <label for="date">*When</label>
-            <input type="date" class="form-control" id="date" name="date">
-          </div>
-
-          {{!-- Vinnie - Adding a new text box for price --}}
-          <div class="form-group">
-            <label for="formGroupExampleInput2">Amount To Be Paid</label>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" id="dollarAmount">
-          </div>
-          {{!--
-          <label for="formGroupExampleInput2">Amount To Be Paid</label>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text">$</span>
-            </div>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" id="dollarAmount">
-          </div> --}} {{!-- </div> --}} {{!-- Vinnie - End adding new text box --}}
-          <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-        <label class="form-check-label" for="defaultCheck1">
-          I understand that this job description and price is correct.
-          </div>
-
-          <br>
-          <button type="submit" class="btn btn-secondary btn-lg">Submit Job</button>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!--map/location-->
-  <div class="block-right">
-    <div id="map"></div>
-  </div>
-
-  <!--info-->
-  <div class="block-bottom">
-    <div id="dash">
-      <!-- Container (Services Section) -->
-      <div id="services" class="container-fluid text-center">
-        <h2>SERVICES</h2>
         <br>
-        <div class="row slideanim">
-          <div class="col-sm-4">
-            <span class="glyphicon glyphicon-off logo-small"></span>
-            <h4>Moving</h4>
-            <p>Lorem ipsum dolor sit amet..</p>
-          </div>
-          <div class="col-sm-4">
-            <span class="glyphicon glyphicon-heart logo-small"></span>
-            <h4>Walking Dogs</h4>
-            <p>Lorem ipsum dolor sit amet..</p>
-          </div>
-          <div class="col-sm-4">
-            <span class="glyphicon glyphicon-lock logo-small"></span>
-            <h4>Tutoring</h4>
-            <p>Lorem ipsum dolor sit amet..</p>
-          </div>
+        <br>
+        <h1 class="header center white-text text-lighten-2">taskScan</h1>
+        <div class="row center">
+          <h5 class="header col s12 dark">A modern job creating app that is helping millions</h5>
         </div>
-        <br>
-        <br>
-        <div class="row slideanim">
-          <div class="col-sm-4">
-            <span class="glyphicon glyphicon-leaf logo-small"></span>
-            <h4>Programming </h4>
-            <p>Lorem ipsum dolor sit amet..</p>
-          </div>
-          <div class="col-sm-4">
-            <span class="glyphicon glyphicon-certificate logo-small"></span>
-            <h4>Babysitting</h4>
-            <p>Lorem ipsum dolor sit amet..</p>
-          </div>
-          <div class="col-sm-4">
-            <span class="glyphicon glyphicon-wrench logo-small"></span>
-            <h4 style="color:#303030;">Assembling
-              <h4>
-                <p>Lorem ipsum dolor sit amet..</p>
-          </div>
+
+        <!--this will trigger our forum in a popup modal-->
+
+        <div class="row center">
+          <!-- Modal Trigger -->
+          <button data-target="modal1" class="btn-large modal-trigger ">Getting started</button>
         </div>
-      </div>
 
-      <!-- Container (Portfolio Section) -->
-      <div id="portfolio" class="container-fluid text-center bg-grey">
-        <h2>Success Stories</h2>
-        <br>
-        <h4>What we have created</h4>
-        <div class="row text-center slideanim">
-          <div class="col-sm-4">
-            <div class="thumbnail">
-              <img src="images/education.png" alt="Tutoring" width="400" height="300">
-              <p>
-                <strong>Education</strong>
-              </p>
-              <p>Tutored students</p>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="thumbnail">
-              <img src="images/dog.jpg" alt="Walkingdog" width="400" height="300">
-              <p>
-                <strong>Pets</strong>
-              </p>
-              <p>Walked dogs</p>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="thumbnail">
-              <img src="images/programming.jpg" alt="Programming" width="400" height="300">
-              <p>
-                <strong>Programming</strong>
-              </p>
-              <p>Built Websites</p>
-            </div>
-          </div>
-        </div>
-        <br>
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+          <div class="modal-content">
 
-        <h2>What our customers say</h2>
-        <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
-          <!-- Indicators -->
-          <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-          </ol>
 
-          <!-- Wrapper for slides -->
-          <div class="carousel-inner" role="listbox">
-            <div class="item active">
-              <h4>"This company is the best. I am so happy with the result!"
-                <br>
-                <span>Michael Roe, Vice President, Comment Box</span>
-              </h4>
-            </div>
-            <div class="item">
-              <h4>"One word... WOW!!"
-                <br>
-                <span>John Doe, Salesman, Rep Inc</span>
-              </h4>
-            </div>
-            <div class="item">
-              <h4>"Could I... BE any more happy with this company?"
-                <br>
-                <span>Chandler Bing, Actor, FriendsAlot</span>
-              </h4>
-            </div>
-          </div>
-
-          <!-- Left and right controls -->
-          <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-      </div>
-      <!-- Container (Contact Section) -->
-      <div id="contact" class="container-fluid bg-grey">
-        <h2 class="text-center">CONTACT</h2>
-        <div class="row">
-          <div class="col-sm-5">
-            <p>Contact us we would love to hear from you!
-              <p>
-                <p>
-                  <span class="glyphicon glyphicon-map-marker"></span> Philadelphia, US</p>
-                <p>
-                  <span class="glyphicon glyphicon-phone"></span> +00 215 215 2151</p>
-                <p>
-                  <span class="glyphicon glyphicon-envelope"></span> myemail@something.com</p>
-          </div>
-          <div class="col-sm-7 slideanim">
-            <div class="row">
-              <div class="col-sm-6 form-group">
-                <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
-              </div>
-              <div class="col-sm-6 form-group">
-                <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
-              </div>
-            </div>
-            <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
+            <h4>Job Forum</h4>
             <br>
+
+
             <div class="row">
-              <div class="col-sm-12 form-group">
-                <button class="btn btn-default pull-right" type="submit">Send</button>
-              </div>
+              <form class="col s12">
+                <div class="row">
+
+                  <div class="input-field col s6">
+                    <input id="first_name" type="text" class="validate">
+                    <label for="first_name">First Name</label>
+                  </div>
+
+                  <div class="input-field col s6">
+                    <input id="last_name" type="text" class="validate">
+                    <label for="last_name">Last Name</label>
+                  </div>
+                </div>
+                <!-- job category: update this -->
+
+                <div class="form-group">
+                  <label for="formGroupExampleInput2">Choose a Job Category</label>
+                  <select class="form-control" id="jobCategory">
+                    <option>Manual Labor</option>
+                    <option>Maintainence</option>
+                    <option>Miscellaneous</option>
+                  </select>
+                </div>
+
+
+                <div class="row">
+
+                </div>
+                <!--  job description-->
+
+                <div class="row">
+                  <div class="input-field col s12">
+
+                    <label for="formGroupExampleInput2">Job Description</label>
+                    <input id="jobDescription" type="text" class="validate" placeholder="Please fill out">
+                  </div>
+                </div>
+                <!-- where-->
+
+                <div class="form-group">
+                  <label for="location">*Where</label>
+                  <!-- <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number"
+                                                            maxlength="5" min="0" id="zipcode" name="location">  -->
+                  <input type="number" class="form-control" maxlength="5" min="0" id="zipcode" name="zipcode" placeholder="Zipcode">
+                </div>
+
+
+                <div class="row">
+
+                </div>
+                <!--  when-->
+                <div class="row">
+                  <div class="input-field col s6">
+                    <label for="date">When do you need help?</label>
+                    <input type="text" class="datepicker">
+                  </div>
+                
+                <!-- at what time?-->
+               
+                    <div class="input-field col s6">
+                      <label for="date">What time do you need help?</label>
+                      <input type="text" class="timepicker">
+                    </div>
+                  </div>
+                <!-- amount to be paid-->
+
+
+
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="dollarAmount" type="text" class="validate" aria-label="Amount (to the nearest dollar)">
+                    <label for="formGroupExampleInput2">Amount To Be Paid?</label>
+                  </div>
+                </div>
+
+
+              </form>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Disagree</a>
+          </div>
+        </div>
+        <br>
+        <br>
+
+
+
+      </div>
+    </div>
+    <!--image2-->
+    <div class="parallax">
+      <img src="images/play2.jpg" alt="Unsplashed background img 1">
+    </div>
+  </div>
+
+
+  
+  <div class="container">
+    <div class="section">
+
+      <!--  carosal   -->
+      <div class="row">
+        <div class="col s12 center">
+          <h3>
+            <i class="mdi-content-send brown-text"></i>
+          </h3>
+          <h4>Services</h4>
+        </div>
+
+        <div class="carousel">
+            <a class="carousel-item" href="#one!"><img src="https://lorempixel.com/250/250/nature/1"></a>
+            <a class="carousel-item" href="#two!"><img src="https://lorempixel.com/250/250/nature/2"></a>
+            <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/250/250/nature/3"></a>
+            <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/250/250/nature/4"></a>
+            <a class="carousel-item" href="#five!"><img src="https://lorempixel.com/250/250/nature/5"></a>
+          </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <h5 class="header col s12 light">Join users all around the world</h5>
+        </div>
+      </div>
+    </div>
+    <div class="parallax">
+      <img src="images/play1.jpg" alt="Unsplashed background img 2">
+    </div>
+  </div>
+
+
+  <!-- Container (Contact Section) -->
+  <div class="container">
+    <div class="section">
+      <div class="row">
+        <div class="col s12 center">
+          <h3>
+            <i class="mdi-content-send brown-text"></i>
+          </h3>
+          <h4>Contact Us, Would love to hear from you!</h4>
+        </div>
+
+        <div class="col-sm-7 slideanim">
+          <div class="row">
+            <div class="col-sm-6 form-group">
+              <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+            </div>
+            <div class="col-sm-6 form-group">
+              <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+            </div>
+          </div>
+          <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
+          <br>
+          <div class="row">
+            <div class="col-sm-12 form-group">
+              <button class="btn btn-default pull-right" type="submit">Send</button>
             </div>
           </div>
         </div>
       </div>
-      {{!-- footer --}}
-      <footer class="container-fluid text-center">
-        <a href="#myPage" title="To Top">
-          <span class="glyphicon glyphicon-chevron-up"></span>
-        </a>
-        <p> Created by : Ryan Halfpenny , Vinne Tranquillo , Jin Kim , Ash Cole
-          <br>
-          <a href="https://github.com/vinnietran/project2" title="Visit github">www.github.com</a>
-        </p>
-      </footer>
+
 
     </div>
   </div>
-  <!-- Custom Script within our public folder -->
-  <script type="text/javascript" src="/js/employer.js"></script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIYLypbzuWg4gxZLmQKjsBJf0i1pAo4dk&callback=initMap"
-    type="text/javascript"></script>
+
+
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+
+          <h5 class="header col s12 light">Finding the right help has never been so easy. Click get started above
+            <i class="fas fa-chevron-up"></i>
+          </h5>
+        </div>
+      </div>
+    </div>
+    <div class="parallax">
+      <img src="images/play4.jpg" alt="Unsplashed background img 3">
+    </div>
+  </div>
+
+  <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Company Bio</h5>
+          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support
+            and continue development on this project and is greatly appreciated.</p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li>
+              <a class="white-text" href="#!">Link 1</a>
+            </li>
+            <li>
+              <a class="white-text" href="#!">Link 2</a>
+            </li>
+            <li>
+              <a class="white-text" href="#!">Link 3</a>
+            </li>
+            <li>
+              <a class="white-text" href="#!">Link 4</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li>
+              <a class="white-text" href="#!">Link 1</a>
+            </li>
+            <li>
+              <a class="white-text" href="#!">Link 2</a>
+            </li>
+            <li>
+              <a class="white-text" href="#!">Link 3</a>
+            </li>
+            <li>
+              <a class="white-text" href="#!">Link 4</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--footer-->
+    <div class="footer-copyright">
+
+      <a href="#myPage" title="To Top">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+      </a>
+
+      <div class="container">
+        Created by : Ryan Halfpenny , Vinne Tranquillo , Jin Kim , Ash Cole
+        <br>
+        <a class="brown-text text-lighten-3" href="https://github.com/vinnietran/project2" title="Visit github">www.github.com</a>
+      </div>
+    </div>
+
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/employer.js"></script>
+
 </body>
 
 </html>
