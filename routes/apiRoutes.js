@@ -113,6 +113,20 @@ module.exports = function(app) {
   });
 };
 
+ // DELETE route for deleting jobs. We can get the id of the job to be deleted from
+  // req.params.id
+  // app.delete("/api/jobs/:name", function(req, res) {
+  //   // We just have to specify which todo we want to destroy with "where"
+  //   db.jobs.destroy({
+  //     where: {
+  //       id: req.params.name
+  //     }
+  //   }).then(function(dbjobs) {
+  //     res.json(dbjobs);
+  //   });
+
+  // });
+
 // var db = require("../models");
 // var passport = require("../config/passport");
 // module.exports = function(app) {
