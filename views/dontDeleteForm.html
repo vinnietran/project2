@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Employer Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" type="text/css" href="styles/employerStyle.css" media="screen">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+
+  <!-- Bootstrap Javascript and jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+  <!-- Moment -->
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+  <style>
+    
+  </style>
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+  <!--nav bar-->
+  {{!-- <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#myPage">Logo</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="#about">About</a>
+          </li>
+          <li>
+            <a href="#services">Services</a>
+          </li>
+          <li>
+            <a href="#portfolio">Profile</a>
+          </li>
+          <li>
+            <a href="#payment">Payment Plan</a>
+          </li>
+          <li>
+            <a href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav> --}}
+
+  <!--job forum-->
+ 
+    
+    <div class="jumbotron jumbotron-fluid" id="banner">
+      <div class="container">
+        <a href="/">
+          <i class="fas fa-home fa-3x"></i>
+        </a>
+        <hr>
+        <h1 class="display-4">Finding help is easy</h1>
+        <!--????-->
+        <h2> Welcome ..
+          <span class="member-name"></span>
+        </h2>
+
+        <p class="lead">Click the map to add a pin and fill out the form</p>
+        <hr>
+
+        <!--Jobs forum-->
+        <form class="jobCreate">
+          <div class="form-group">
+            <label for="formGroupExampleInput">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Please enter your name">
+          </div>
+
+          <div class="form-group">
+            <label for="formGroupExampleInput2">Choose a Job Category</label>
+            <select class="form-control" id="jobCategory">
+              <option>Manual Labor</option>
+              <option>Maintainence</option>
+              <option>Miscellaneous</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="formGroupExampleInput2">Job Description</label>
+            <input type="text" class="form-control" id="jobDescription" placeholder="Please fill out">
+          </div>
+
+          <div class="form-group">
+            <label for="location">*Where</label>
+            <!-- <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number"
+                                                    maxlength="5" min="0" id="zipcode" name="location">  -->
+            <input type="number" class="form-control" maxlength="5" min="0" id="zipcode" name="zipcode" placeholder="Zipcode">
+          </div>
+          <div class="form-group">
+            <label for="date">*When</label>
+            <input type="date" class="form-control" id="date" name="date">
+          </div>
+
+          {{!-- Vinnie - Adding a new text box for price --}}
+          <div class="form-group">
+            <label for="formGroupExampleInput2">Amount To Be Paid</label>
+            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" id="dollarAmount">
+          </div>
+          {{!--
+          <label for="formGroupExampleInput2">Amount To Be Paid</label>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" id="dollarAmount">
+          </div> --}} {{!-- </div> --}} {{!-- Vinnie - End adding new text box --}}
+              <div id="map"></div>
+          <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+        <label class="form-check-label" for="defaultCheck1">
+          I understand that this job description and price is correct.
+          </div>
+
+          <br>
+          <button type="submit" class="btn btn-secondary btn-lg">Submit Job</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!--map/location-->
+ 
+
+
+
+  <!--info-->
+  <div class="block-bottom">
+    <div id="dash">
+      <!-- Container (Services Section) -->
+      <div id="services" class="container-fluid text-center">
+        <h2>SERVICES</h2>
+        <br>
+        <div class="row slideanim">
+          <div class="col-sm-4">
+            <span class="glyphicon glyphicon-off logo-small"></span>
+            <h4>Moving</h4>
+            <p>Lorem ipsum dolor sit amet..</p>
+          </div>
+          <div class="col-sm-4">
+            <span class="glyphicon glyphicon-heart logo-small"></span>
+            <h4>Walking Dogs</h4>
+            <p>Lorem ipsum dolor sit amet..</p>
+          </div>
+          <div class="col-sm-4">
+            <span class="glyphicon glyphicon-lock logo-small"></span>
+            <h4>Tutoring</h4>
+            <p>Lorem ipsum dolor sit amet..</p>
+          </div>
+        </div>
+        <br>
+        <br>
+        <div class="row slideanim">
+          <div class="col-sm-4">
+            <span class="glyphicon glyphicon-leaf logo-small"></span>
+            <h4>Programming </h4>
+            <p>Lorem ipsum dolor sit amet..</p>
+          </div>
+          <div class="col-sm-4">
+            <span class="glyphicon glyphicon-certificate logo-small"></span>
+            <h4>Babysitting</h4>
+            <p>Lorem ipsum dolor sit amet..</p>
+          </div>
+          <div class="col-sm-4">
+            <span class="glyphicon glyphicon-wrench logo-small"></span>
+            <h4 style="color:#303030;">Assembling
+              <h4>
+                <p>Lorem ipsum dolor sit amet..</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Container (Portfolio Section) -->
+      <div id="portfolio" class="container-fluid text-center bg-grey">
+        <h2>Success Stories</h2>
+        <br>
+        <h4>What we have created</h4>
+        <div class="row text-center slideanim">
+          <div class="col-sm-4">
+            <div class="thumbnail">
+              <img src="images/education.png" alt="Tutoring" width="400" height="300">
+              <p>
+                <strong>Education</strong>
+              </p>
+              <p>Tutored students</p>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="thumbnail">
+              <img src="images/dog.jpg" alt="Walkingdog" width="400" height="300">
+              <p>
+                <strong>Pets</strong>
+              </p>
+              <p>Walked dogs</p>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="thumbnail">
+              <img src="images/programming.jpg" alt="Programming" width="400" height="300">
+              <p>
+                <strong>Programming</strong>
+              </p>
+              <p>Built Websites</p>
+            </div>
+          </div>
+        </div>
+        <br>
+
+        <h2>What our customers say</h2>
+        <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <h4>"This company is the best. I am so happy with the result!"
+                <br>
+                <span>Michael Roe, Vice President, Comment Box</span>
+              </h4>
+            </div>
+            <div class="item">
+              <h4>"One word... WOW!!"
+                <br>
+                <span>John Doe, Salesman, Rep Inc</span>
+              </h4>
+            </div>
+            <div class="item">
+              <h4>"Could I... BE any more happy with this company?"
+                <br>
+                <span>Chandler Bing, Actor, FriendsAlot</span>
+              </h4>
+            </div>
+          </div>
+
+          <!-- Left and right controls -->
+          <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+      <!-- Container (Contact Section) -->
+      <div id="contact" class="container-fluid bg-grey">
+        <h2 class="text-center">CONTACT</h2>
+        <div class="row">
+          <div class="col-sm-5">
+            <p>Contact us we would love to hear from you!
+              <p>
+                <p>
+                  <span class="glyphicon glyphicon-map-marker"></span> Philadelphia, US</p>
+                <p>
+                  <span class="glyphicon glyphicon-phone"></span> +00 215 215 2151</p>
+                <p>
+                  <span class="glyphicon glyphicon-envelope"></span> myemail@something.com</p>
+          </div>
+          <div class="col-sm-7 slideanim">
+            <div class="row">
+              <div class="col-sm-6 form-group">
+                <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+              </div>
+              <div class="col-sm-6 form-group">
+                <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+              </div>
+            </div>
+            <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
+            <br>
+            <div class="row">
+              <div class="col-sm-12 form-group">
+                <button class="btn btn-default pull-right" type="submit">Send</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{!-- footer --}}
+      <footer class="container-fluid text-center">
+        <a href="#myPage" title="To Top">
+          <span class="glyphicon glyphicon-chevron-up"></span>
+        </a>
+        <p> Created by : Ryan Halfpenny , Vinne Tranquillo , Jin Kim , Ash Cole
+          <br>
+          <a href="https://github.com/vinnietran/project2" title="Visit github">www.github.com</a>
+        </p>
+      </footer>
+
+    </div>
+  </div>
+  <!-- Custom Script within our public folder -->
+  <script type="text/javascript" src="/js/employer.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIYLypbzuWg4gxZLmQKjsBJf0i1pAo4dk&callback=initMap"
+    type="text/javascript"></script>
+</body>
+
+</html>

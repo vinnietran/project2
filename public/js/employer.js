@@ -10,10 +10,10 @@
 
 
 //jobs modal
-document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('.modal');
-  var instances = M.Modal.init(elems, options);
-});// Or with jQuery
+// document.addEventListener('DOMContentLoaded', function() {
+//   var elems = document.querySelectorAll('.modal');
+//   var instances = M.Modal.init(elems, options);
+// });// Or with jQuery
 
 
 //*******date
@@ -21,30 +21,30 @@ $(document).ready(function(){
   $('.modal').modal();
 });
      
-document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('.datepicker');
-  var instances = M.Datepicker.init(elems, options);
-});// Or with jQuery
+// document.addEventListener('DOMContentLoaded', function() {
+//   var elems = document.querySelectorAll('.datepicker');
+//   var instances = M.Datepicker.init(elems, options);
+// });// Or with jQuery
 
 $(document).ready(function(){
   $('.datepicker').datepicker();
 });
         
 //*******time
-document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('.timepicker');
-  var instances = M.Timepicker.init(elems, options);
-});// Or with jQuery
+// document.addEventListener('DOMContentLoaded', function() {
+//   var elems = document.querySelectorAll('.timepicker');
+//   var instances = M.Timepicker.init(elems, options);
+// });// Or with jQuery
 
 $(document).ready(function(){
   $('.timepicker').timepicker();
 });
 
 //******carousel 
-document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('.carousel');
-  var instances = M.Carousel.init(elems, options);
-});
+// document.addEventListener('DOMContentLoaded', function() {
+//   var elems = document.querySelectorAll('.carousel');
+//   var instances = M.Carousel.init(elems, options);
+// });
 
 // Or with jQuery
 

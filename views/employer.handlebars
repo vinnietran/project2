@@ -32,12 +32,12 @@
         </a>
         <ul class="right hide-on-med-and-down">
           <li>
-            <a href="#about">Home
+            <a href="./">Home
               <i class="fas fa-home"></i>
             </a>
           </li>
           <li>
-            <a href="#services">Select Service
+            <a href="./home">Select Service
               <i class="fas fa-hand-pointer"></i>
             </a>
           </li>
@@ -86,19 +86,15 @@
 
 
             <div class="row">
-              <form class="col s12">
+              <form class="col s12" class="jobCreate">
                 <div class="row">
 
                   <div class="input-field col s6">
-                    <input id="first_name" type="text" class="validate">
+                    <input id="name" type="text" class="validate">
                     <label for="first_name">First Name</label>
                   </div>
 
-                  <div class="input-field col s6">
-                    <input id="last_name" type="text" class="validate">
-                    <label for="last_name">Last Name</label>
-                  </div>
-                </div>
+                
                 <!-- job category: update this -->
 
                 <div class="form-group">
@@ -140,14 +136,14 @@
                 <div class="row">
                   <div class="input-field col s6">
                     <label for="date">When do you need help?</label>
-                    <input type="text" class="datepicker">
+                    <input type="text" class="datepicker" id="date">
                   </div>
                 
                 <!-- at what time?-->
                
                     <div class="input-field col s6">
                       <label for="date">What time do you need help?</label>
-                      <input type="text" class="timepicker">
+                      <input type="text" class="timepicker" id="time">
                     </div>
                   </div>
                 <!-- amount to be paid-->
@@ -167,9 +163,11 @@
           </div>
 
           <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+             
+            <button type="submit" class="modal-close waves-effect waves-green btn-flat">Agree</button>
             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Disagree</a>
           </div>
+          </form>
         </div>
         <br>
         <br>
@@ -343,6 +341,7 @@
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/employer.js"></script>
+   <script src="js/employerPOST.js"></script>
 
 </body>
 
