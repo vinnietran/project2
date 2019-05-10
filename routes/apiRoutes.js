@@ -23,7 +23,6 @@ module.exports = function(app) {
     });
   });
 
-
   app.get("/api/users", function(req, res) {
     // findAll returns all entries for a table when used with no options
     db.users.findAll({}).then(function(dbusers) {
@@ -32,27 +31,25 @@ module.exports = function(app) {
     });
   });
 
-  
   app.get("/api/:category?", function(req, res) {
     if (req.params.category) {
       // Display the JSON for ONLY that character.
-    
-      db.jobs.findOne({
-        where: {
-          category: req.params.category
-        }
-      }).then(function(result) {
-        return res.json(result);
-      });
+
+      db.jobs
+        .findAll({
+          where: {
+            category: req.params.category
+          }
+        })
+        .then(function(result) {
+          return res.json(result);
+        });
     } else {
       db.jobs.findAll().then(function(result) {
         return res.json(result);
       });
     }
   });
-
-
-
 
   app.post("/api/signup", function(req, res) {
     console.log(req.body);
@@ -79,10 +76,9 @@ module.exports = function(app) {
         category: req.body.category,
         description: req.body.description,
         amount: req.body.amount,
-        zipcode:req.body.zipcode,
+        zipcode: req.body.zipcode,
         date: req.body.date,
         time: req.body.time
-      
       })
       .then(function() {
         res.redirect(307, "/");
@@ -93,7 +89,6 @@ module.exports = function(app) {
         // res.status(422).json(err.errors[0].message);
       });
   });
- 
 
   // Route for logging user out
   app.get("/logout", function(req, res) {
@@ -117,8 +112,6 @@ module.exports = function(app) {
     }
   });
 };
-
-
 
 // var db = require("../models");
 // var passport = require("../config/passport");
@@ -145,28 +138,27 @@ module.exports = function(app) {
 //       });
 //   });
 
-  // // DELETE route for deleting posts
-  // app.delete("/api/posts/:id", function(req, res) {
-  //   db.Post.destroy({
-  //     where: {
-  //       id: req.params.id
-  //     }
-  //   })
-  //     .then(function(dbPost) {
-  //       res.json(dbPost);
-  //     });
-  // });
+// // DELETE route for deleting posts
+// app.delete("/api/posts/:id", function(req, res) {
+//   db.Post.destroy({
+//     where: {
+//       id: req.params.id
+//     }
+//   })
+//     .then(function(dbPost) {
+//       res.json(dbPost);
+//     });
+// });
 
-  // // PUT route for updating posts
-  // app.put("/api/posts", function(req, res) {
-  //   db.Post.update(req.body,
-  //     {
-  //       where: {
-  //         id: req.body.id
-  //       }
-  //     })
-  //     .then(function(dbPost) {
-  //       res.json(dbPost);
-  //     });
-  // });
-
+// // PUT route for updating posts
+// app.put("/api/posts", function(req, res) {
+//   db.Post.update(req.body,
+//     {
+//       where: {
+//         id: req.body.id
+//       }
+//     })
+//     .then(function(dbPost) {
+//       res.json(dbPost);
+//     });
+// });

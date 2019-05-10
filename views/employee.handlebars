@@ -1,95 +1,246 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Employee Page</title>
+
   <title>Simple Map</title>
   <meta name="viewport" content="initial-scale=1.0">
   <meta charset="utf-8">
-  <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIYLypbzuWg4gxZLmQKjsBJf0i1pAo4dk&callback=initMap"
-    type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" href="styles/employeeStyle.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  
+  <style>
+    #map {
+      height: 60%;
+      width: 100%;
+      margin-bottom: 20px;
+      margin-top: -20px;
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="styles/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="styles/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
 </head>
 
-<body>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+  <!--nav-->
+  <div class="navbar-fixed">
+    <nav class="white" role="navigation">
+
+      <!--logo-->
+      <div class="nav-wrapper container">
+        <a id="logo-container" href="#myPage" class="brand-logo">taskScan <i class="fas fa-angle-double-right"></i></a>
+        <ul class="right hide-on-med-and-down">
+          <li>
+            <a href="#about">Home <i class="fas fa-home"></i> </a>
+          </li>
+          <li>
+            <a href="#services">Select Service <i class="fas fa-hand-pointer"></i></a>
+          </li>
 
 
-  <div class="block-left">
+        </ul>
 
+        <ul id="nav-mobile" class="sidenav">
+          <li>
+            <a href="#">Navbar Link</a>
+          </li>
+        </ul>
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger">
+          <i class="material-icons">menu</i>
+        </a>
+      </div>
+    </nav>
+  </div>
 
-    <div class="jumbotron jumbotron-fluid" id="banner">
+  <!--forum-->
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+
       <div class="container">
-        
-       <a href ="/"> <i class="fas fa-home fa-3x"></i></a>
-       <hr>
-        <h1 class="display-4">Finding work is easy</h1>
-        <p class="lead">Look through the map to find a job that fits you</p>
-        <hr>
-   
-    
-    <div class="row">
+        <br>
+        <br>
+        <h1 class="header center white-text text-lighten-2">taskScan</h1>
+        <div class="row center">
+          <h3 class="header col s12 dark">Select the Job that is right for you by using the Dropdown below
+          </h3>
+        </div>
+      </div>
+    </div>
+    <!--image2-->
+    <div class="parallax">
+      <img src="/images/play2.jpg" alt="Unsplashed background img 1">
+    </div>
+  </div>
 
-      <div class="col-lg-12">
 
-        <div class="card mb-4">
-          <div class="card-header">
-           Category Search
-          </div>
-          <div class="card-body" >
-           
-            <select class="form-control" id="category-search">
-            <option>Manual Labor</option>
-            <option>Maintainence</option>
-            <option>Miscellaneous</option>
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Category Selection -->
+      <div class="row">
+        <div class="col s12 m12">
+
+          <select id="category-search">
+            <option value="" disabled selected>Choose your job Category</option>
+            <option value="Maintainence">Maintainence</option>
+            <option value="Manual Labor">Manual Labor</option>
+            <option value="Miscellaneous">Miscellaneous</option>
           </select>
-            <br>
-            <div class="text-right">
-              <button type="submit" class="btn btn-primary btn-md" id="search-btn">
-                <span class="fa fa-search"></span> Search for your job</button>
+          <br>
+        </div>
 
-            </div>
+        <div class="row">
+        <div class="row">
+          <button id="search-btn" class="btn-large">Find My Job!</button>
+          <br>
+          <br>
+          <br>
+          <table class="highlight" id='jobtable'>
+            <thead>
+              <tr>
+                <th>Employer Name</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
           </div>
         </div>
       </div>
     </div>
-            
-        
-      </div>
-    </div>
 
   </div>
 
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
 
-
-  <div class="block-right">
-    <div class="container" id="banner">
-    <div class="row">
-
-      <div class="col-lg-12">
-
-        <div class="card">
-          <div class="card-header">
-            Job Details
-          </div>
-          <div class="card-body" id="well-section">
-            <!-- Content will go in here -->
-          </div>
+        <div class="row center">
+          <h3>Check the form below for the location of your job on the map!</h3>
         </div>
       </div>
     </div>
+    <div class="parallax">
+      <img src="/images/play1.jpg" alt="Unsplashed background img 2">
+    </div>
   </div>
 
 
+  <!-- Container (Contact Section) -->
+  <div class="container">
+    <div class="section">
+      <div class="row">
+
+      </div>
+    </div>
   </div>
 
 
-  {{!-- <script>
-    // Note: This example requires that you consent to location sharing when
-    // prompted by your browser. If you see the error "The Geolocation service
-    // failed.", it means you probably did not give permission for the browser to
-    // locate you.
+  <div id="map"></div>
+
+
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+
+          <h5 class="header col s12 light">Finding the right help has never been so easy. Click get started
+            above <i class="fas fa-chevron-up"></i></h5>
+        </div>
+      </div>
+    </div>
+    <div class="parallax">
+      <img src="/images/play4.jpg" alt="Unsplashed background img 3">
+    </div>
+  </div>
+
+  <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Company Bio</h5>
+          <p class="grey-text text-lighten-4">We are a team of college students working on this project like
+            it's our full time job. Any amount would help support
+            and continue development on this project and is greatly appreciated.</p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li>
+              <a class="white-text" href="#!">Link 1</a>
+            </li>
+            <li>
+              <a class="white-text" href="#!">Link 2</a>
+            </li>
+            <li>
+              <a class="white-text" href="#!">Link 3</a>
+            </li>
+            <li>
+              <a class="white-text" href="#!">Link 4</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li>
+              <a class="white-text" href="#!">Link 1</a>
+            </li>
+            <li>
+              <a class="white-text" href="#!">Link 2</a>
+            </li>
+            <li>
+              <a class="white-text" href="#!">Link 3</a>
+            </li>
+            <li>
+              <a class="white-text" href="#!">Link 4</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--footer-->
+    <div class="footer-copyright">
+
+      <a href="#myPage" title="To Top">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+      </a>
+
+      <div class="container">
+        Created by : Ryan Halfpenny , Vinne Tranquillo , Jin Kim , Ash Cole
+        <br>
+        <a class="brown-text text-lighten-3" href="https://github.com/vinnietran/project2"
+          title="Visit github">www.github.com</a>
+      </div>
+    </div>
+
+  </footer>
+
+
+
+
+  <script>
+    // for google map api
+
     var map, infoWindow;
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
@@ -117,8 +268,8 @@
         // Browser doesn't support Geolocation
         handleLocationError(false, infoWindow, map.getCenter());
       }
-       
-      
+
+
     }
 
     function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -128,105 +279,68 @@
         'Error: Your browser doesn\'t support geolocation.');
       infoWindow.open(map);
     }
-   
+
 
   </script>
-   --}}
-  </div>
-
- <script>
-  
-		$("#search-btn").on("click", function() {
-  // save the character they typed into the character-search input
-  var searchedCategory = $("#category-search")
-    .val()
-    .trim();
-
-  // Using a RegEx Pattern to remove spaces from searchedCharacter
-  // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-  
-
-  // run an AJAX GET-request for our servers api,
-  // including the user's character in the url
-  $.get("/api/" + searchedCategory, function(data) {
-    // log the data to our console
-    console.log(data);
-    console.log(name);
-    // empty to well-section before adding new content
-    $("#well-section").empty();
-    // if the data is not there, then return an error message
-    if (!data) {
-      $("#well-section").append("<h2> No data found. </h2>");
-    }
-    else {
-      // otherwise
-      
-      console.log("test if else works");
- 
-    
-      // append the character name
-      $("#well-section").append("<h2 Employer Name>" + data.name + "</h2>");
-      // the role
-      $("#well-section").append("<h3>Category: " + data.category + "</h3>");
-      // the age
-      $("#well-section").append("<h3>Description of job: " + data.description + "</h3>");
-      // and the force points
-      $("#well-section").append("<h3>Price for completion: " + data.amount + "</h3>");
-    }
-  });
-});
-
-
-		</script>
-
-
-
-
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIYLypbzuWg4gxZLmQKjsBJf0i1pAo4dk&callback=initMap"
+    async defer></script>
 </body>
 
 </html>
 
-		{{!-- $("#search-btn").on("click", function() {
-  // save the character they typed into the character-search input
-  var searchedCategory = $("#category-search")
-    .val()
-    .trim();
+<script>
 
-  // Using a RegEx Pattern to remove spaces from searchedCharacter
-  // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-  searchedCategory = searchedCategory.replace(/\s+/g, "").toLowerCase();
+  $("#search-btn").on("click", function () {
+    // save the character they typed into the character-search input
+    var searchedCategory = $("#category-search")
+      .val()
+      .trim();
 
-  // run an AJAX GET-request for our servers api,
-  // including the user's character in the url
-  $.get("/api/" + searchedCategory, function(data) {
-    // log the data to our console
-    console.log(data);
-    console.log(name);
-    // empty to well-section before adding new content
-    
-// for each character that our server sends us back
-  for (var i = 0; i < data.length; i++) {
-    // create a parent div for the oncoming elements
-    var wellSection = $("<div>");
-    // add a class to this div: 'well'
-    wellSection.addClass("well");
-    // add an id to the well to mark which well it is
-    wellSection.attr("id", "character-well-" + i);
-    // append the well to the well section
-    $("#well-section").append(wellSection);
+    // Using a RegEx Pattern to remove spaces from searchedCharacter
+    // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
 
-    // Now add all of our character data to the well we just placed on the page
-console.log(data[i].name);
-console.log(data[i].amount);
-    // make the name an h2,
-    $("#character-well-" + i).append("<h2>" + data[i].name + "</h2>");
-    // the role an h3,
-    $("#character-well-" + i).append("<h3>Role: " + data[i].category + "</h4>");
-    // the age an h3,
-    $("#character-well-" + i).append("<h3>Age: " + data[i].description + "</h4>");
-    // and the forcepoints an h3.
-    $("#character-well-" + i).append("<h3>Price for job: " + data[i].amount + "</h4>");
-  }
-});
 
-    }); --}}
+    // run an AJAX GET-request for our servers api,
+    // including the user's character in the url
+    $.get("/api/" + searchedCategory, function (data) {
+      // log the data to our console
+      console.log(data);
+      console.log(name);
+      // empty to well-section before adding new content
+      $("#well-section").empty();
+      // if the data is not there, then return an error message
+      if (!data) {
+        $("#well-section").append("<h2> No data found. </h2>");
+      }
+      else {
+        // otherwise
+
+        console.log("test if else works");
+
+        for (var i = 0; i < data.length; i++) {
+          var newRow = $("<tr>").append(
+            $("<td>").text(data[i].name),
+            $("<td>").text(data[i].category),
+            $("<td>").text(data[i].description),
+            $("<td>").text("$" + data[i].amount),
+          );
+          $("#jobtable").append(newRow);
+        }
+
+
+      }
+    });
+  });
+
+
+</script>
+
+
+<!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="js/materialize.js"></script>
+<script src="js/init.js"></script>
+
+</body>
+
+</html>

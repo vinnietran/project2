@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Employee Page</title>
+
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+
+        #map {
+            height: 60%;
+            width: 40%;
+            margin-left: 90px;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="/styles/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+    <!--nav-->
+    <div class="navbar-fixed">
+        <nav class="white" role="navigation">
+
+            <!--logo-->
+            <div class="nav-wrapper container">
+                <a id="logo-container" href="#myPage" class="brand-logo">taskScan <i
+                        class="fas fa-angle-double-right"></i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li>
+                        <a href="#about">Home <i class="fas fa-home"></i> </a>
+                    </li>
+                    <li>
+                        <a href="#services">Select Service <i class="fas fa-hand-pointer"></i></a>
+                    </li>
+
+
+                </ul>
+
+                <ul id="nav-mobile" class="sidenav">
+                    <li>
+                        <a href="#">Navbar Link</a>
+                    </li>
+                </ul>
+                <a href="#" data-target="nav-mobile" class="sidenav-trigger">
+                    <i class="material-icons">menu</i>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <!--forum-->
+    <div id="index-banner" class="parallax-container">
+        <div class="section no-pad-bot">
+
+            <div class="container">
+                <br>
+                <br>
+                <h1 class="header center white-text text-lighten-2">taskScan</h1>
+                <div class="row center">
+                    <h3 class="header col s12 dark">Select the Job that is right for you by using the Dropdown below
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <!--image2-->
+        <div class="parallax">
+            <img src="play2.jpg" alt="Unsplashed background img 1">
+        </div>
+    </div>
+
+
+
+    <div class="container">
+        <div class="section">
+
+            <!--   Category Selection -->
+            <div class="row">
+                <div class="col s12 m12">
+
+                    <select id="categorySelect">
+                        <option value="" disabled selected>Choose your job Category</option>
+                        <option value="1">Maintainence</option>
+                        <option value="2">Manual Labor</option>
+                        <option value="3">Miscellaneous</option>
+                    </select>
+                    <br>
+                </div>
+                <!--this will trigger our forum in a popup modal-->
+
+                <div class="row center">
+                    <!-- Modal Trigger -->
+                    <button data-target="modal1" class="btn-large">Find My Job!</button>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="parallax-container valign-wrapper">
+        <div class="section no-pad-bot">
+            <div class="container">
+
+                <div class="row center">
+                    <h3>Check the form below for the location of your job on the map!</h3>
+                </div>
+            </div>
+        </div>
+        <div class="parallax">
+            <img src="play1.jpg" alt="Unsplashed background img 2">
+        </div>
+    </div>
+
+
+    <!-- Container (Contact Section) -->
+    <div class="container">
+        <div class="section">
+            <div class="row">
+                
+            </div>
+        </div>
+    </div>
+
+    
+    <div id="map"></div>
+    
+
+    <div class="parallax-container valign-wrapper">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <div class="row center">
+
+                    <h5 class="header col s12 light">Finding the right help has never been so easy. Click get started
+                        above <i class="fas fa-chevron-up"></i></h5>
+                </div>
+            </div>
+        </div>
+        <div class="parallax">
+            <img src="play4.jpg" alt="Unsplashed background img 3">
+        </div>
+    </div>
+
+    <footer class="page-footer teal">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Company Bio</h5>
+                    <p class="grey-text text-lighten-4">We are a team of college students working on this project like
+                        it's our full time job. Any amount would help support
+                        and continue development on this project and is greatly appreciated.</p>
+
+
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text">Settings</h5>
+                    <ul>
+                        <li>
+                            <a class="white-text" href="#!">Link 1</a>
+                        </li>
+                        <li>
+                            <a class="white-text" href="#!">Link 2</a>
+                        </li>
+                        <li>
+                            <a class="white-text" href="#!">Link 3</a>
+                        </li>
+                        <li>
+                            <a class="white-text" href="#!">Link 4</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text">Connect</h5>
+                    <ul>
+                        <li>
+                            <a class="white-text" href="#!">Link 1</a>
+                        </li>
+                        <li>
+                            <a class="white-text" href="#!">Link 2</a>
+                        </li>
+                        <li>
+                            <a class="white-text" href="#!">Link 3</a>
+                        </li>
+                        <li>
+                            <a class="white-text" href="#!">Link 4</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--footer-->
+        <div class="footer-copyright">
+
+            <a href="#myPage" title="To Top">
+                <span class="glyphicon glyphicon-chevron-up"></span>
+            </a>
+
+            <div class="container">
+                Created by : Ryan Halfpenny , Vinne Tranquillo , Jin Kim , Ash Cole
+                <br>
+                <a class="brown-text text-lighten-3" href="https://github.com/vinnietran/project2"
+                    title="Visit github">www.github.com</a>
+            </div>
+        </div>
+
+    </footer>
+
+
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/materialize.js"></script>
+    <script src="js/init.js"></script>
+
+    <script>
+        // for google map api
+
+        var map, infoWindow;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: -34.397, lng: 150.644 },
+                zoom: 12
+            });
+            infoWindow = new google.maps.InfoWindow;
+
+            // Try HTML5 geolocation.
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+
+                    infoWindow.setPosition(pos);
+                    infoWindow.setContent('We found you, please follow the form to add your job.');
+                    infoWindow.open(map);
+                    map.setCenter(pos);
+                }, function () {
+                    handleLocationError(true, infoWindow, map.getCenter());
+                });
+            } else {
+                // Browser doesn't support Geolocation
+                handleLocationError(false, infoWindow, map.getCenter());
+            }
+
+
+        }
+
+        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+            infoWindow.setPosition(pos);
+            infoWindow.setContent(browserHasGeolocation ?
+                'Error: The Geolocation service failed.' :
+                'Error: Your browser doesn\'t support geolocation.');
+            infoWindow.open(map);
+        }
+
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIYLypbzuWg4gxZLmQKjsBJf0i1pAo4dk&callback=initMap"
+        async defer></script>
+</body>
+
+</html>
