@@ -5,14 +5,16 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>taskScan</title>
 	<meta name="description" content="">
-<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://code.jquery.com/jquery.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/css/all.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-		    <script type="text/javascript" src="/js/signup.js"></script>
-			 <script type="text/javascript" src="/js/login.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	 crossorigin="anonymous">
+
+	   
+	<script type="text/javascript" src="/js/signup.js"></script>
+	<script type="text/javascript" src="/js/login.js"></script>
 </head>
 <style>
 	@import url('https://fonts.googleapis.com/css?family=Ubuntu');
@@ -108,7 +110,7 @@
 		background-color: #fff;
 		border-radius: 10px;
 		box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-			0 10px 10px rgba(0, 0, 0, 0.22);
+		0 10px 10px rgba(0, 0, 0, 0.22);
 		position: relative;
 		overflow: hidden;
 		width: 768px;
@@ -333,7 +335,9 @@
 
 	<div class="main">
 		<h1 class="main-heading">
-			<span class="main-heading-primary">taskScan<i class="fas fa-angle-double-right"></i></span>
+			<span class="main-heading-primary">taskScan
+				<i class="fas fa-angle-double-right"></i>
+			</span>
 			<span class="main-heading-secondary">Find the right help...</i>!</span>
 		</h1>
 	</div>
@@ -343,12 +347,18 @@
 			<form class="signup">
 				<h1>Create Account</h1>
 				<div class="social-container">
-					<a href="https://www.facebook.com" class="social"><i class="fab fa-facebook-f"></i></a>
-					<a href="https://www.google.com" class="social"><i class="fab fa-google-plus-g"></i></a>
-					<a href="https://www.linkedin.com" class="social"><i class="fab fa-linkedin-in"></i></a>
+					<a href="https://www.facebook.com" class="social">
+						<i class="fab fa-facebook-f"></i>
+					</a>
+					<a href="https://www.google.com" class="social">
+						<i class="fab fa-google-plus-g"></i>
+					</a>
+					<a href="https://www.linkedin.com" class="social">
+						<i class="fab fa-linkedin-in"></i>
+					</a>
 				</div>
 				<span>or use your email for registration</span>
-				<input type="text" placeholder="Name" id="name-input"/>
+				<input type="text" placeholder="Name" id="name-input" />
 				<input type="email" placeholder="Email" id="email-input" />
 				<input type="password" placeholder="Password" id="password-input" />
 				<button type="submit" id="createUser">Sign In </button>
@@ -359,16 +369,23 @@
 			<form class="login">
 				<h1>Sign in</h1>
 				<div class="social-container">
-					<a href="https://www.facebook.com" class="social"><i class="fab fa-facebook-f"></i></a>
-					<a href="https://www.google.com" class="social"><i class="fab fa-google-plus-g"></i></a>
-					<a href="https://www.linkedin.com" class="social"><i class="fab fa-linkedin-in"></i></a>
+					<a href="https://www.facebook.com" class="social">
+						<i class="fab fa-facebook-f"></i>
+					</a>
+					<a href="https://www.google.com" class="social">
+						<i class="fab fa-google-plus-g"></i>
+					</a>
+					<a href="https://www.linkedin.com" class="social">
+						<i class="fab fa-linkedin-in"></i>
+					</a>
 				</div>
 				<span>or use your account</span>
 				<input type="email" placeholder="email" id="email-input1" />
-				<input type="password" placeholder="password" id="password-input1"/>
+				<input type="password" placeholder="password" id="password-input1" />
 				<a href="./home" class="forgot-password">Forgot your password?</a>
-			<button type="submit" id="loginUser">Sign In </a></button>
-				{{!-- href="./home" style="text-decoration:none;"  --}}
+				<button type="submit" id="loginUser">Sign In </a>
+				</button>
+				{{!-- href="./home" style="text-decoration:none;" --}}
 			</form>
 		</div>
 		<div class="overlay-container">
@@ -387,23 +404,21 @@
 		</div>
 	</div>
 </body>
-	
-	<script
-		src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
-	<script id="rendered-js">
-		const signUpButton = document.getElementById('signUp');
-		const signInButton = document.getElementById('signIn');
-		const container = document.getElementById('container');
-var createUserButton = document.getElementById('createUser');
-		signUpButton.addEventListener('click', () => container.classList.add('right-panel-active'));
 
-		signInButton.addEventListener('click', () => container.classList.remove('right-panel-active'));
+<script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
+<script id="rendered-js">
+	const signUpButton = document.getElementById('signUp');
+	const signInButton = document.getElementById('signIn');
+	const container = document.getElementById('container');
+	var createUserButton = document.getElementById('createUser');
+	signUpButton.addEventListener('click', () => container.classList.add('right-panel-active'));
 
-	</script>
-	<script
-		src="https://static.codepen.io/assets/editor/live/css_reload-5619dc0905a68b2e6298901de54f73cefe4e079f65a75406858d92924b4938bf.js"></script>
+	signInButton.addEventListener('click', () => container.classList.remove('right-panel-active'));
 
-	
+</script>
+<script src="https://static.codepen.io/assets/editor/live/css_reload-5619dc0905a68b2e6298901de54f73cefe4e079f65a75406858d92924b4938bf.js"></script>
+
+
 
 
 

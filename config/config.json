@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Codepass7",
+    "password": "MagicalPanda510",
     "database": "taskscandb",
     "host": "localhost",
     "dialect": "mysql"

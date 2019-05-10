@@ -8,10 +8,13 @@
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+    crossorigin="anonymous">
   <link href="styles/materialize.styles" type="text/css" rel="stylesheet" media="screen,projection" />
   <link href="styles/employerStyle.css" type="text/css" rel="stylesheet" media="screen,projection" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
 </head>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -19,16 +22,12 @@
   <!--nav-->
   <div class="navbar-fixed">
     <nav class="white" role="navigation">
-
-      <!--logo-->
-      <div class="nav-wrapper container">
-        <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button> -->
+      <div class="nav-wrapper">
         <a id="logo-container" href="#myPage" class="brand-logo">taskScan
           <i class="fas fa-angle-double-right"></i>
+        </a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+          <i class="material-icons">menu</i>
         </a>
         <ul class="right hide-on-med-and-down">
           <li>
@@ -42,31 +41,29 @@
             </a>
           </li>
 
-
         </ul>
 
-        <ul id="nav-mobile" class="sidenav">
-          <li>
-            <a href="#">Navbar Link</a>
-          </li>
-        </ul>
-        <a href="#" data-target="nav-mobile" class="sidenav-trigger">
-          <i class="material-icons">menu</i>
-        </a>
       </div>
     </nav>
+
+    <ul class="sidenav" id="mobile-demo"> 
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger">
+          <i class="material-icons">menu</i>
+        </a>
+    </ul>
   </div>
 
-  <!--forum-->
+
+  <!--forum container-->
   <div id="index-banner" class="parallax-container">
     <div class="section no-pad-bot">
 
       <div class="container">
         <br>
         <br>
-        <h1 class="header center white-text text-lighten-2">taskScan</h1>
+        <h1 class="header center white-text text-lighten-2">A modern job creating app that is helping millions</h1>
         <div class="row center">
-          <h5 class="header col s12 dark">A modern job creating app that is helping millions</h5>
+          <h5 class="header col s12 dark">Let us scan your tasks!</h5>
         </div>
 
         <!--this will trigger our forum in a popup modal-->
@@ -89,7 +86,7 @@
               <form class="jobCreate">
                 <div class="row">
 
-                  <div class="input-field col s6">
+                  <div class="input-field col s12">
                     <input id="name" type="text" class="validate">
                     <label for="first_name">First Name</label>
                   </div>
@@ -98,7 +95,7 @@
                   <!-- job category: update this -->
 
                   <div class="form-group">
-                    <label for="formGroupExampleInput2">Choose a Job Category</label>
+                    <label for="formGroupExampleInput2">Choose a Job Service</label>
                     <select class="form-control" id="jobCategory">
                       <option>Manual Labor</option>
                       <option>Maintainence</option>
@@ -106,10 +103,6 @@
                     </select>
                   </div>
 
-
-                  <div class="row">
-
-                  </div>
                   <!--  job description-->
 
                   <div class="row">
@@ -119,56 +112,69 @@
                       <input id="jobDescription" type="text" class="validate" placeholder="Please fill out">
                     </div>
                   </div>
+
                   <!-- where-->
-
-                  <div class="form-group">
-                    <label for="location">*Where</label>
-                    <!-- <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number"
-                                                            maxlength="5" min="0" id="zipcode" name="location">  -->
-                    <input type="number" class="form-control" maxlength="5" min="0" id="zipcode" name="zipcode"
-                      placeholder="Zipcode">
-                  </div>
-                  <div class="input-field col s6">
-                    <input id="date" type="text" class="validate" placeholder="DD/MM/YY">
-                    <label for="first_name">When</label>
-                  </div>
-                </div>
-                <!--  when-->
-                <div class="row">
-                  <div class="form-group">
-                    <label for="formGroupExampleInput2">Choose a Job Category</label>
-                    <select class="form-control" id="time">
-                      <option>Between 10 AM - 12 PM </option>
-                      <option>Between 12 PM - 2 PM </option>
-                      <option>Between 2 PM - 4 PM </option>
-                      <option>Between 4 AM - 6 PM </option>
-                    </select>
-                  </div>
-
-                  <!-- at what time?-->
-
-
-                  <!-- amount to be paid-->
-
-
-
                   <div class="row">
-                    <div class="input-field col s12">
-                      <input id="dollarAmount" type="text" class="validate" aria-label="Amount (to the nearest dollar)">
-                      <label for="formGroupExampleInput2">Amount To Be Paid?</label>
+                    <div class="form-group">
+                      <label for="location">*Where</label>
+                      <!-- <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number"
+                                                            maxlength="5" min="0" id="zipcode" name="location">  -->
+                      <input type="number" class="form-control" maxlength="5" min="0" id="zipcode" name="zipcode" placeholder="Zipcode">
                     </div>
                   </div>
 
+                  <!--  when with calendar not part of mvp-->
+                  {{!--
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <label for="date">When do you need help?</label>
+                      <input type="text" class="datepicker">
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="date" type="text" class="validate" placeholder="DD/MM/YY">
+                      <label for="first_name">When</label>
+                    </div>
+                  </div> --}}
+
+                  <!--  when-->
+                  <div class="row">
+                    <div class="form-group">
+                      <label for="formGroupExampleInput2">Choose a Job Category</label>
+                      <select class="form-control" id="time">
+                        <option>Between 10 AM - 12 PM </option>
+                        <option>Between 12 PM - 2 PM </option>
+                        <option>Between 2 PM - 4 PM </option>
+                        <option>Between 4 AM - 6 PM </option>
+                      </select>
+                    </div>
+
+                    <!-- at what time?-->
+                   
+                      <div class="input-field col s6">
+                        <label for="date">What time do you need help?</label>
+                        <input type="text" class="timepicker">
+                      </div>
+                    </div>
 
 
-                </div>
+                    <!-- amount to be paid-->
+                    <div class="row">
+                      <div class="input-field col s6">
+                        <input id="dollarAmount" type="text" class="validate" aria-label="Amount (to the nearest dollar)">
+                        <label for="formGroupExampleInput2">Amount To Be Paid?</label>
+                      </div>
+                    </div>
+
+
+              </form>
+              </div>
+              </div>
+
+              <div class="modal-footer">
+                <button class="btn btn-default pull-right" type="submit">Send</button>
+              </div>
+
             </div>
-
-            <div class="modal-footer">
-
-              <button class="btn btn-default pull-right" type="submit">Send</button>
-            </div>
-            </form>
           </div>
           <br>
           <br>
@@ -183,8 +189,7 @@
       </div>
     </div>
 
-
-
+    <!--Categories changed to service only in the event it will not affect any backend.-->
     <div class="container">
       <div class="section">
 
@@ -198,18 +203,28 @@
           </div>
 
           <div class="carousel">
-            <a class="carousel-item" href="#one!"><img src="https://lorempixel.com/250/250/nature/1"></a>
-            <a class="carousel-item" href="#two!"><img src="https://lorempixel.com/250/250/nature/2"></a>
-            <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/250/250/nature/3"></a>
-            <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/250/250/nature/4"></a>
-            <a class="carousel-item" href="#five!"><img src="https://lorempixel.com/250/250/nature/5"></a>
+            <a class="carousel-item" href="#one!">
+              <img src="https://lorempixel.com/250/250/nature/1">
+            </a>
+            <a class="carousel-item" href="#two!">
+              <img src="https://lorempixel.com/250/250/nature/2">
+            </a>
+            <a class="carousel-item" href="#three!">
+              <img src="https://lorempixel.com/250/250/nature/3">
+            </a>
+            <a class="carousel-item" href="#four!">
+              <img src="https://lorempixel.com/250/250/nature/4">
+            </a>
+            <a class="carousel-item" href="#five!">
+              <img src="https://lorempixel.com/250/250/nature/5">
+            </a>
           </div>
         </div>
 
       </div>
     </div>
 
-
+    <!--image 2 -->
     <div class="parallax-container valign-wrapper">
       <div class="section no-pad-bot">
         <div class="container">
@@ -232,7 +247,7 @@
             <h3>
               <i class="mdi-content-send brown-text"></i>
             </h3>
-            <h4>Contact Us, Would love to hear from you!</h4>
+            <h4>We Would love to hear from you!</h4>
           </div>
 
           <div class="col-sm-7 slideanim">
@@ -258,7 +273,7 @@
       </div>
     </div>
 
-
+    <!--image 3 -->
     <div class="parallax-container valign-wrapper">
       <div class="section no-pad-bot">
         <div class="container">
@@ -276,13 +291,12 @@
     </div>
 
     <footer class="page-footer teal">
-      <div class="container">
+      {{!-- <div class="container">
         <div class="row">
           <div class="col l6 s12">
-            <h5 class="white-text">Company Bio</h5>
-            <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our
-              full time job. Any amount would help support
-              and continue development on this project and is greatly appreciated.</p>
+            <h5 class="white-text">Group 4</h5>
+            <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help
+              support and continue development on this project and is greatly appreciated.</p>
 
 
           </div>
@@ -321,7 +335,7 @@
             </ul>
           </div>
         </div>
-      </div>
+      </div> --}}
       <!--footer-->
       <div class="footer-copyright">
 
@@ -332,8 +346,7 @@
         <div class="container">
           Created by : Ryan Halfpenny , Vinne Tranquillo , Jin Kim , Ash Cole
           <br>
-          <a class="brown-text text-lighten-3" href="https://github.com/vinnietran/project2"
-            title="Visit github">www.github.com</a>
+          <a class="brown-text text-lighten-3" href="https://github.com/vinnietran/project2" title="Visit github">www.github.com</a>
         </div>
       </div>
 
@@ -343,11 +356,12 @@
     <!--  Scripts-->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="js/materialize.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="js/employer.js"></script>
-    <script src="js/employerPOST.js"></script>
-
-
-    {{!-- <script>
+    <script src="js/employerPOST.js"></script> 
+    {{!--
+    <script>
       jobForm.on("submit", function (event) {
         event.preventDefault();
         console.log("job form Submitted");

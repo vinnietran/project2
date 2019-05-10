@@ -1,11 +1,17 @@
 
     /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
-    #map {
+    /* #map {
       height: 100%;
+    } */
+    /*JIn: */
+    #map {
+      height: 60%;
+      width: 100%;
+      margin-bottom: 20px;
+      margin-top: -20px;
     }
 
-    /* Optional: Makes the sample page fill the window. */
     html,
     body {
       height: 100%;
@@ -13,49 +19,56 @@
       padding: 0;
     }
 
-    .block-left {
-      width: 15%;
-      height: 100vh;
-      background-image: url("https://www.pixelstalk.net/wp-content/uploads/2016/08/Cool-nature-photos-desktop-background-620x472.jpg");
-      float: left;
-      background-size: cover;
+    h4 {
+      color:black;
     }
-
-    .block-right {
-    
-      background-image: url("https://newevolutiondesigns.com/images/freebies/abstract-background-preview-65.jpg");
-      width: 85%;
-      float: right;
-      background-size: cover;
-      height: 100vh;
-
-    }
-
-    /* MEDIA QUERIES FOR 545px <= Resolutions */
-
-    @media (max-width:545px) {
-      .block-left {
-        display: block;
-        width: 60%;
-      }
-
-      .block-right {
-        display: block;
-        width: 40%;
-      }
-    }
-    #banner{
-margin-top: 20px;
-margin-left: 10px;
-margin-right: 10px;
-opacity: 0.8;
-
-    }
-    #banner:hover {
-      opacity:0.9;
-      
+    nav ul a,
+    nav .brand-logo {
+      color: #444;
     }
     
-  .btn {
-    text-align: center;
-  }
+    p {
+      line-height: 2rem;
+    }
+    
+    .sidenav-trigger {
+      color: #26a69a;
+    }
+    
+    .parallax-container {
+      min-height: 500px;
+      line-height: 0;
+      height: auto;
+      color: rgba(255,255,255,.9);
+    }
+      .parallax-container .section {
+        width: 100%;
+      }
+    
+    @media only screen and (max-width : 992px) {
+      .parallax-container .section {
+        position: absolute;
+        top: 40%;
+      }
+      #index-banner .section {
+        top: 10%;
+      }
+    }
+    
+    @media only screen and (max-width : 600px) {
+      #index-banner .section {
+        top: 0;
+      }
+    }
+    
+    .icon-block {
+      padding: 0 15px;
+    }
+    .icon-block .material-icons {
+      font-size: inherit;
+    }
+    
+    footer.page-footer {
+      margin: 0;
+    }
+    

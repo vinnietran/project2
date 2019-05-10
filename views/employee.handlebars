@@ -9,28 +9,15 @@
   <title>Simple Map</title>
   <meta name="viewport" content="initial-scale=1.0">
   <meta charset="utf-8">
-  <style>
-    #map {
-      height: 60%;
-      width: 100%;
-      margin-bottom: 20px;
-      margin-top: -20px;
-    }
-
-    html,
-    body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-  </style>
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="styles/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-  <link href="styles/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+    crossorigin="anonymous">
+  <link href="styles/materialize.styles" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="styles/employeeStyle.css" type="text/css" rel="stylesheet" media="screen,projection" />
 
 </head>
 
@@ -39,16 +26,12 @@
   <!--nav-->
   <div class="navbar-fixed">
     <nav class="white" role="navigation">
-
-      <!--logo-->
-      <div class="nav-wrapper container">
-        <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button> -->
+      <div class="nav-wrapper">
         <a id="logo-container" href="#myPage" class="brand-logo">taskScan
           <i class="fas fa-angle-double-right"></i>
+        </a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+          <i class="material-icons">menu</i>
         </a>
         <ul class="right hide-on-med-and-down">
           <li>
@@ -62,23 +45,20 @@
             </a>
           </li>
 
-
         </ul>
 
-        <ul id="nav-mobile" class="sidenav">
-          <li>
-            <a href="#">Navbar Link</a>
-          </li>
-        </ul>
-        <a href="#" data-target="nav-mobile" class="sidenav-trigger">
-          <i class="material-icons">menu</i>
-        </a>
       </div>
     </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+    </ul>
   </div>
 
 
-  <!--forum-->
+  <!--forum container do this last.-->
   <div id="index-banner" class="parallax-container">
     <div class="section no-pad-bot">
 
@@ -99,7 +79,7 @@
   </div>
 
 
-
+  <!--employee forum do this last.-->
   <div class="container">
     <div class="section">
 
@@ -129,7 +109,7 @@
                   <th>Category</th>
                   <th>Description</th>
                   <th>Date</th>
-                   <th>Time</th>
+                  <th>Time</th>
                   <th>Amount</th>
                   <th> Select</th>
                 </tr>
@@ -143,14 +123,17 @@
 
   </div>
 
+  <!--image 2-->
   <div class="parallax-container valign-wrapper">
     <div class="section no-pad-bot">
       <div class="container">
 
         <div class="row center">
-          <h3>Check the form below for the location of your job on the map!</h3>
+          <h4>Check the form below for the location of your job on the map!</h4>
         </div>
+
       </div>
+
     </div>
     <div class="parallax">
       <img src="/images/play1.jpg" alt="Unsplashed background img 2">
@@ -158,26 +141,20 @@
   </div>
 
 
-  <!-- Container (Contact Section) -->
-  <div class="container">
-    <div class="section">
-      <div class="row">
-
-      </div>
-    </div>
-  </div>
-
-
+  <!-- Container for map? (we may discard this container)  -->
   <div id="map"></div>
 
 
+
+  <!--image 3-->
   <div class="parallax-container valign-wrapper">
     <div class="section no-pad-bot">
       <div class="container">
         <div class="row center">
 
-          <h5 class="header col s12 light">Finding the right help has never been so easy. Click get started
-            above <i class="fas fa-chevron-up"></i></h5>
+          <h5 class="header col s12 light">Finding the right help has never been so easy. Click get started above
+            <i class="fas fa-chevron-up"></i>
+          </h5>
         </div>
       </div>
     </div>
@@ -186,13 +163,14 @@
     </div>
   </div>
 
+  <!--footer-->
   <footer class="page-footer teal">
+    {{!--
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
           <h5 class="white-text">Company Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like
-            it's our full time job. Any amount would help support
+          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support
             and continue development on this project and is greatly appreciated.</p>
 
 
@@ -232,9 +210,9 @@
           </ul>
         </div>
       </div>
-    </div>
+    </div> --}}
     <!--footer-->
-    <div class="footer-copyright">
+    <div class="footer-copyright text-center">
 
       <a href="#myPage" title="To Top">
         <span class="glyphicon glyphicon-chevron-up"></span>
@@ -243,127 +221,25 @@
       <div class="container">
         Created by : Ryan Halfpenny , Vinne Tranquillo , Jin Kim , Ash Cole
         <br>
-        <a class="brown-text text-lighten-3" href="https://github.com/vinnietran/project2"
-          title="Visit github">www.github.com</a>
+        <a class="brown-text text-lighten-3" href="https://github.com/vinnietran/project2" title="Visit github">www.github.com</a>
       </div>
     </div>
 
   </footer>
 
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/map.js"></script>
 
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="js/employer.js"></script>
+  <script src="js/employeePOST.js"></script>
 
-
-  <script>
-    // for google map api
-
-    var map, infoWindow;
-    function initMap() {
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: -34.397, lng: 150.644 },
-        zoom: 12
-      });
-      infoWindow = new google.maps.InfoWindow;
-
-      // Try HTML5 geolocation.
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-          var pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
-
-          infoWindow.setPosition(pos);
-          infoWindow.setContent('We found you, please follow the form to add your job.');
-          infoWindow.open(map);
-          map.setCenter(pos);
-        }, function () {
-          handleLocationError(true, infoWindow, map.getCenter());
-        });
-      } else {
-        // Browser doesn't support Geolocation
-        handleLocationError(false, infoWindow, map.getCenter());
-      }
-
-
-    }
-
-    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-      infoWindow.setPosition(pos);
-      infoWindow.setContent(browserHasGeolocation ?
-        'Error: The Geolocation service failed.' :
-        'Error: Your browser doesn\'t support geolocation.');
-      infoWindow.open(map);
-    }
-
-
-  </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIYLypbzuWg4gxZLmQKjsBJf0i1pAo4dk&callback=initMap"
-    async defer></script>
+  <!--google maps api-->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIYLypbzuWg4gxZLmQKjsBJf0i1pAo4dk&callback=initMap" async
+    defer></script>
 </body>
 
 </html>
-
-<script>
-
-  $("#search-btn").on("click", function () {
-    // save the character they typed into the character-search input
-    var searchedCategory = $("#category-search")
-      .val()
-      .trim();
-
-    // Using a RegEx Pattern to remove spaces from searchedCharacter
-    // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-
-
-    // run an AJAX GET-request for our servers api,
-    // including the user's character in the url
-    $.get("/api/" + searchedCategory, function (data) {
-      // log the data to our console
-      console.log(data);
-      console.log(name);
-      // empty to well-section before adding new content
-      $("#well-section").empty();
-      // if the data is not there, then return an error message
-      if (!data) {
-        $("#well-section").append("<h2> No data found. </h2>");
-      }
-      else {
-        // otherwise
-
-        console.log("test if else works");
-
-        for (var i = 0; i < data.length; i++) {
-          var newRow = $("<tr>").append(
-            $("<td>").text(data[i].name),
-            $("<td>").text(data[i].category),
-            $("<td>").text(data[i].description),
-            $("<td>").text(data[i].date),
-            $("<td>").text(data[i].time),
-            $("<td>").text("$" + data[i].amount),
-               $("<td>").append("<button id='selectJob' " +  "class='selectJob'" + "class='btn-large'> " + "Select this Job! " + "</button>")
-          );
-          $("#jobtable").append(newRow);
-          console.log(data);
-    }
-
-
-      }
-    });
-  });
-   ///////////////////////////////
-
-
-
-</script>
-
-
-<!--  Scripts-->
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="js/materialize.js"></script>
-<script src="js/init.js"></script>
-
-</body>
-
-</html>
-
-
