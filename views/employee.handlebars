@@ -312,7 +312,7 @@
     var searchedCategory = $("#category-search")
       .val()
       .trim();
-
+   
     // Using a RegEx Pattern to remove spaces from searchedCharacter
     // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
 
@@ -364,7 +364,7 @@
 
 
     jobUpdate.on("submit", function (event) {
-
+alert("You have accepted this job, the Employer has been notified.")
       function updateJobs(jobs) {
         $.ajax({
           method: "PUT",
