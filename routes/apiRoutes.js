@@ -78,7 +78,10 @@ module.exports = function(app) {
         name: req.body.name,
         category: req.body.category,
         description: req.body.description,
-        amount: req.body.amount
+        amount: req.body.amount,
+        zipcode:req.body.zipcode,
+        date: req.body.date,
+        time: req.body.time
       
       })
       .then(function() {

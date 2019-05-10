@@ -1,58 +1,61 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
 
-    /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-    #map {
-      height: 100%;
-    }
+/* notice this is applying color to our jobs fourm module.*/
+h4 {
+  color:black;
+}
+nav ul a,
+nav .brand-logo {
+  color: #444;
+}
 
-    /* Optional: Makes the sample page fill the window. */
-    html,
-    body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
+p {
+  line-height: 2rem;
+}
 
-    .block-left {
-      width: 20%;
-      height: 100vh;
-      background-image: url("https://www.pixelstalk.net/wp-content/uploads/2016/08/Cool-nature-photos-desktop-background-620x472.jpg");
-      float: left;
-      background-size: cover;
-    }
+.sidenav-trigger {
+  color: #26a69a;
+}
 
-    .block-right {
-      width: 80%;
-      height: 100vh;
+.parallax-container {
+  min-height: 500px;
+  line-height: 0;
+  height: auto;
+  color: rgba(255,255,255,.9);
+}
+  .parallax-container .section {
+    width: 100%;
+  }
 
-    }
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-banner .section {
+    top: 10%;
+  }
+}
 
-    /* MEDIA QUERIES FOR 545px <= Resolutions */
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+}
 
-    @media (max-width:545px) {
-      .block-left {
-        display: block;
-        width: 20%;
-      }
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+  font-size: inherit;
+}
 
-      .block-right {
-        display: block;
-        width: 80%;
-      }
-    }
-
-    #banner {
-      margin-top: 10px;
-      margin-left: 10px;
-      margin-right: 10px;
-      opacity: 0.8;
-
-    }
-
-    #banner:hover {
-      opacity: 0.9;
-    }
-
-    .btn {
-      text-align: center;
-    }
+footer.page-footer {
+  margin: 0;
+}

@@ -7,34 +7,38 @@ module.exports = function(sequelize, DataTypes) {
 
       type: DataTypes.STRING,
       allowNull:false
-     
-    
     },
+
     category: {
       type: DataTypes.STRING,
       allowNull: false
     },
+
+    date: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    time: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     description: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    
+
+   zipcode: {
+      type: DataTypes.INTEGER,
       allowNull: false
     },
-    // isaccepted: {
-    //   type: DataTypes.BOOLEAN,
-    //   allowNull: false,
-    //   defaultValue: false
-    // },
-    // acceptedby: {
-    //   //FK of USERS.id
-    //   type: DataTypes.STRING
-    // },
+
+
     amount: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false
     }
-    // iscomplete: {
-    //   type: DataTypes.BOOLEAN,
-    //   allowNull: true,
-    //   defaultValue: false
+
     // }
   });
   // jobs.associate = function(models) {
