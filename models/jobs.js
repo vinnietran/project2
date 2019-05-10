@@ -15,12 +15,16 @@ module.exports = function(sequelize, DataTypes) {
     },
 
     date: {
-      type: DataTypes.INTEGER,
-      allowNull: false
+      type: DataTypes.STRING,
+      allowNull: true
     },
     time: {
-      type: DataTypes.DECIMAL(2,2),
-      allowNull: false
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: true
     },
     
 

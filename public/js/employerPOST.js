@@ -30,8 +30,9 @@ $(document).ready(function () {
         zipcode: zipcode.val(),
         date: date.val(),
         time: time.val()
+       
       };
-  
+      console.log("form submitted")
   
       // If we have an email and password, run the signUpUser function
       createJobPost(newJob.name, newJob.category, newJob.description, newJob.amount, newJob.zipcode, newJob.date, newJob.time);
@@ -54,7 +55,7 @@ $(document).ready(function () {
         description: description,
         amount: amount,
         zipcode: zipcode,
-        data: date,
+        date: date,
         time: time
        
       })
