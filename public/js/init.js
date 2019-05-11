@@ -17,36 +17,13 @@ $(document).ready(function(){
   $('.modal').modal();
 });
 
-// $(document).ready(function () {
-//   //MAKE SURE YOU CALL .leanModal METHOD THIS WAY.
-//   //ELSE MODAL MAP WILL NOT SHOW PROPERLY.
-//     $('.modal-trigger').leanModal({
-//         ready: function () {
-//             var map2 = document.getElementById("map");
-//             google.maps.event.trigger(map2, 'resize');
-//         }
-//     });
-// });
-     
-
-
 $(document).ready(function(){
   $('.datepicker').datepicker();
 });
-        
-//*******time
-
-
-
-//******carousel 
-
-
-// Or with jQuery
 
 $(document).ready(function(){
   $('.carousel').carousel();
 });
-    
 $(document).ready(function () {
   // Add smooth scrolling to all links in navbar + footer link
   $(".navbar a, footer a[href='#myPage']").on('click', function (event) {
@@ -82,9 +59,6 @@ $(document).ready(function () {
   });
 
 })
-
-
-// Or with jQuery
 
 $(document).ready(function(){
   $('select').formSelect();

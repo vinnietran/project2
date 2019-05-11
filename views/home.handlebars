@@ -1,57 +1,39 @@
 <body>
 
-
   <link rel="stylesheet" type="text/css" href="styles/homeStyle.css">
-
-
   <div class="container">
     <div class="section hpanel leftpan">
       <div class="homeTag">
-        <h3>Home <i class="fas fa-home"></i>  </h3>
+        <h3>Home <i class="fas fa-home"></i> </h3>
       </div>
       <div class="background-img">
         <div class="content-area">
           <br>
           <h2>Need help with a job?</h2>
           <div class="btn-area">
-
             <a href="./employer">ENTER</a> </div>
         </div>
-
       </div>
-
     </div>
-
     <div class="section hpanel rightpan">
       <div class="background-img">
         <div class="content-area" id="secondBut">
           <br>
-         
           <h2>Looking to help?</h2>
-          <div class="btn-area" >
-
+          <div class="btn-area">
             <a href="./employee">ENTER</a> </div>
         </div>
-
       </div>
-
     </div>
     <script>
-     $(document).ready(function() {
-  // This file just does a GET request to figure out which user is logged in
-  // and updates the HTML on the page
-  $.get("/api/users").then(function(users) {
-    $(".member-name").text(users.name);
-    console.log(users.name);
-    console.log("works");
-  
-    console.log(users.name);
-  });
-});
-
-
+      $(document).ready(function () {
+        // This file just does a GET request to figure out which user is logged in
+        // and updates the HTML on the page
+        $.get("/api/users").then(function (users) {
+          $(".member-name").text(users.name);
+        });
+      });
     </script>
 
 </body>
 
-</html>
