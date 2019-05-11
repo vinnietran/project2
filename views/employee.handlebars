@@ -29,8 +29,8 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="styles/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
   <link href="styles/employeeStyle.css" type="text/css" rel="stylesheet" media="screen,projection" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+    crossorigin="anonymous">
 
 </head>
 
@@ -87,10 +87,10 @@
         </div>
       </div>
     </div>
-    {{!-- <!--image2-->
+    <!--image2-->
     <div class="parallax">
       <img src="/images/play2.jpg" alt="Unsplashed background img 1">
-    </div> --}}
+    </div>
   </div>
 
 
@@ -163,7 +163,38 @@
   <div class="container">
     <div class="section">
       <div class="row">
-
+<div class="card-deck">
+  <div class="card">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+  </div>
+</div>
       </div>
     </div>
   </div>
@@ -177,8 +208,9 @@
       <div class="container">
         <div class="row center">
 
-          <h5 class="header col s12 light">Finding the right help has never been so easy. Click get started
-            above <i class="fas fa-chevron-up"></i></h5>
+          <h5 class="header col s12 light">Finding the right help has never been so easy. Click get started above
+            <i class="fas fa-chevron-up"></i>
+          </h5>
         </div>
       </div>
     </div>
@@ -198,116 +230,76 @@
       <div class="container">
         Created by : Ryan Halfpenny , Vinne Tranquillo , Jin Kim , Ash Cole
         <br>
-        <a class="brown-text text-lighten-3" href="https://github.com/vinnietran/project2"
-          title="Visit github">www.github.com</a>
+        <a class="brown-text text-lighten-3" href="https://github.com/vinnietran/project2" title="Visit github">www.github.com</a>
       </div>
     </div>
 
   </footer>
-
-
-
-
+<!--employeePost-->
   <script>
-    // for google map api
+    //On click function to display the available jobs
+    $("#search-btn").on("click", function () {
+      event.preventDefault();
+      var searchedCategory = $("#category-search")
+        .val();
 
-    var map, infoWindow;
-    function initMap() {
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: -34.397, lng: 150.644 },
-        zoom: 12
-      });
-      infoWindow = new google.maps.InfoWindow;
+      $("#well-section").empty()
 
-      // Try HTML5 geolocation.
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-          var pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
+      $.get("/api/" + searchedCategory, function (data) {
+        // log the data to our console
+        console.log('ni hao')
+        console.log(data);
+        //console.log(name);
 
-          infoWindow.setPosition(pos);
-          infoWindow.setContent('We found you, please follow the form to add your job.');
-          infoWindow.open(map);
-          map.setCenter(pos);
-        }, function () {
-          handleLocationError(true, infoWindow, map.getCenter());
-        });
-      } else {
-        // Browser doesn't support Geolocation
-        handleLocationError(false, infoWindow, map.getCenter());
-      }
-
-
-    }
-
-    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-      infoWindow.setPosition(pos);
-      infoWindow.setContent(browserHasGeolocation ?
-        'Error: The Geolocation service failed.' :
-        'Error: Your browser doesn\'t support geolocation.');
-      infoWindow.open(map);
-    }
-
-
-  </script>
-
-  <!--Maps Link-->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIYLypbzuWg4gxZLmQKjsBJf0i1pAo4dk&callback=initMap"
-    async defer>
-  </script>
-
-</body>
-
-</html>
-
-<script>
-
-//On click function to display the available jobs
-  $("#search-btn").on("click", function () {
-    event.preventDefault();
-    var searchedCategory = $("#category-search")
-      .val()
-      .trim();
-
-    $("#well-section").empty()
-
-    $.get("/api/" + searchedCategory, function (data) {
-      // log the data to our console
-      console.log(data);
-      console.log(name);
-      
-      if (!data) {
-        $("#jobtable").append("<h2> No data found. </h2>");
-      }
-      else {
-        // otherwise
-
-        console.log("test if else works");
-
-        for (var i = 0; i < data.length; i++) {
-          var newRow = $("<tr>").append(
-            $("<td>").text(data[i].name),
-            $("<td>").text(data[i].category),
-            $("<td>").text(data[i].description),
-            $("<td>").text(data[i].date),
-            $("<td>").text(data[i].time),
-            $("<td>").text("$" + data[i].amount),
-            $("<td>").append("<button id='selectJob'" + "class='btn-large'> " + "Select this Job! " + "</button>")
-          );
-          $("#jobtable").append(newRow);
-          console.log(data);
+        if (!data) {
+          $("#jobtable").append("<h2> No data found. </h2>");
         }
-      }
+        else {
+          // otherwise
+
+          console.log("test if else works");
+
+          for (var i = 0; i < data.length; i++) {
+            var newRow = $("<tr>").append(
+              $("<td>").text(data[i].name),
+              $("<td>").text(data[i].category),
+              $("<td>").text(data[i].description),
+              $("<td>").text(data[i].date),
+              $("<td>").text(data[i].time),
+              $("<td>").text("$" + data[i].amount),
+              $("<td>").append("<button id='selectJob' " + "class='btn-large'> " + "Select this Job! " + "</button>")
+            );
+            $("#jobtable").append(newRow);
+            console.log(data);
+          }
+        }
+      });
     });
-  });
 
-  $("#selectJob").on("click", function () {
-    event.preventDefault();
+    $("#selectJob").on("click", function () {
+      //upon click, this console message will log. 
+      console.log('selectjob button was clicked')
 
-    console.log("SUP");
-  })
+      event.preventDefault();
+
+      $.post("/api/recievedButton", {
+        recievedResponse: "true"
+
+      })
+        .then(function (data) {
+          //window.location.replace(data);
+          console.log(data);
+          console.log("test2");
+          // If there's an error, handle it by throwing up a bootstrap alert
+        })
+        .fail(function (error) {
+          console.log('we hit an error at api recievedButton')
+        });
+
+
+
+      console.log("SUP");
+    })
 
 
   /*
@@ -327,14 +319,19 @@
     });
   }); --}}*/
 
-</script>
+  </script>
 
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
 
-<!--  Scripts-->
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="js/materialize.js"></script>
-<script src="js/init.js"></script>
+  <!--Maps Link-->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIYLypbzuWg4gxZLmQKjsBJf0i1pAo4dk&callback=initMap" async
+    defer>
+    </script>
 
+  <script src="js/map.js"></script>
 </body>
 
 </html>

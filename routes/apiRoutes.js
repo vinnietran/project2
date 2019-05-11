@@ -109,6 +109,22 @@ module.exports = function(app) {
       });
   });
 
+  app.post("/api/recievedButton", function(req, res) {
+    console.log(req.body);
+    db.jobs
+      .update({
+        recievedResponse: req.body.name
+      })
+      .then(function() {
+        res.redirect(307, "/");
+      })
+      .catch(function(err) {
+        console.log(err);
+        res.json(err);
+        // res.status(422).json(err.errors[0].message);
+      });
+  });
+
   // Route for logging user out
   app.get("/logout", function(req, res) {
     req.logout();

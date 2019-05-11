@@ -61,6 +61,7 @@ $(document).ready(function () {
       })
         .then(function (data) {
           window.location.replace(data);
+          console.log(data);
           console.log("test2");
           // If there's an error, handle it by throwing up a bootstrap alert
         })
