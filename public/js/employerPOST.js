@@ -44,6 +44,7 @@ $(document).ready(function () {
       date.val("");
       time.val("");
       console.log("Good User");
+      alert("Your job has been posted! ");
     });
   
     // Does a post to the signup route. If successful, we are redirected to the members page
@@ -60,8 +61,9 @@ $(document).ready(function () {
        
       })
         .then(function (data) {
+   
           window.location.replace(data);
-          console.log("test2");
+     
           // If there's an error, handle it by throwing up a bootstrap alert
         })
         .fail(handleLoginErr);
