@@ -97,6 +97,7 @@
 
   <div class="container">
     <div class="section">
+      <form class="jobUpdate">
 
       <!--   Category Selection -->
       <div class="flexbox">
@@ -119,6 +120,7 @@
             <button id="search-btn" class="btn-large">Find My Job!</button>
           </div>
         </div>
+        </form>
         <div class="row">
           <div class="col s12 m12">
             <form class="jobdisplay">
@@ -298,7 +300,7 @@
             $("<td>").text(data[i].date),
             $("<td>").text(data[i].time),
             $("<td>").text("$" + data[i].amount),
-            $("<td>").append("<button id='job'" + "class='btn-small'> " + "Select this Job! " + "</button>")
+            $("<td>").append("<button id='job'" +  "onclick='response()'" + "class='btn-small'> " + "Select this Job! " + "</button>")
           );
           $("#jobtable").append(newRow);
           console.log(data);
@@ -307,18 +309,19 @@
     });
   });
 
-  $("#job").on("click", function () {
-    event.preventDefault();
 
-    console.log("SUP");
-  })
+function response() {
+alert("You have accepted this job, the Employer has been notified.")
+
+
+}
 
 
   /*
   Efforts for future state to update the db record when a job is accepted
 
   {{!-- $(document).ready(function () {
-    var jobUpdate = $("form.jobUpdate");
+  
     jobUpdate.on("submit", function (event) {
       alert("You have accepted this job, the Employer has been notified.")
       function updateJobs(jobs) {

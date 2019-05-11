@@ -59,3 +59,12 @@ p {
 footer.page-footer {
   margin: 0;
 }
+
+.buttonCenter {
+
+ 
+  float: right 
+}
+p{
+  text-align: center;
+}
