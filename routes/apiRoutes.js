@@ -15,24 +15,24 @@ module.exports = function(app) {
     res.json("/home");
   });
 
-
-  
   app.put("/api/jobs", function(req, res) {
     // Update takes in an object describing the properties we want to update, and
     // we use where to describe which objects we want to update
-    db.jobs.update({
-      recievedResponse: req.body.recievedResponse
-  
-    }, {
-      where: {
-        id: req.body.id
-      }
-    }).then(function(dbjobs) {
-      res.json(dbjobs);
-    });
+    db.jobs
+      .update(
+        {
+          recievedResponse: req.body.recievedResponse
+        },
+        {
+          where: {
+            id: req.body.id
+          }
+        }
+      )
+      .then(function(dbjobs) {
+        res.json(dbjobs);
+      });
   });
-
-
 
   app.get("/api/jobs", function(req, res) {
     // findAll returns all entries for a table when used with no options
@@ -131,8 +131,6 @@ module.exports = function(app) {
     }
   });
 };
-
-
 
 // var db = require("../models");
 // var passport = require("../config/passport");
