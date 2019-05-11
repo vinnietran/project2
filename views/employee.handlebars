@@ -27,7 +27,6 @@
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="styles/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
   <link href="styles/employeeStyle.css" type="text/css" rel="stylesheet" media="screen,projection" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
     integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
@@ -35,11 +34,9 @@
 </head>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
-
   <!--nav-->
   <div class="navbar-fixed">
     <nav class="white" role="navigation">
-
       <!--logo-->
       <div class="nav-wrapper container">
         <a id="logo-container" href="#myPage" class="brand-logo">taskScan
@@ -56,8 +53,6 @@
               <i class="fas fa-hand-pointer"></i>
             </a>
           </li>
-
-
         </ul>
 
         <ul id="nav-mobile" class="sidenav">
@@ -71,12 +66,9 @@
       </div>
     </nav>
   </div>
-
-
   <!--forum-->
   <div id="index-banner" class="parallax-container">
     <div class="section no-pad-bot">
-
       <div class="container">
         <br>
         <br>
@@ -93,17 +85,13 @@
     </div>
   </div>
 
-
-
   <div class="container">
     <div class="section">
       <form class="jobUpdate">
-
       <!--   Category Selection -->
       <div class="flexbox">
         <div class="row">
           <div class="col s12 m12">
-
             <select id="category-search">
               <option value="" disabled selected>Choose your job Category</option>
               <option value="Maintainence">Maintainence</option>
@@ -113,7 +101,6 @@
             <br>
           </div>
         </div>
-
 
         <div class="row">
           <div class="col s12 m12">
@@ -139,7 +126,6 @@
     </div>
   </div>
   </div>
-
   </div>
 
   <div class="parallax-container valign-wrapper">
@@ -155,26 +141,18 @@
       <img src="/images/play1.jpg" alt="Unsplashed background img 2">
     </div>
   </div>
-
-
   <!-- Container (Contact Section) -->
   <div class="container">
     <div class="section">
       <div class="row">
-
       </div>
     </div>
   </div>
-
-
   <div id="map"></div>
-
-
   <div class="parallax-container valign-wrapper">
     <div class="section no-pad-bot">
       <div class="container">
         <div class="row center">
-
           <h5 class="header col s12 light">Finding the right help has never been so easy. Click get started
             above <i class="fas fa-chevron-up"></i></h5>
         </div>
@@ -184,15 +162,12 @@
       <img src="/images/play4.jpg" alt="Unsplashed background img 3">
     </div>
   </div>
-
   <footer class="page-footer teal">
     <!--footer-->
     <div class="footer-copyright">
-
       <a href="#myPage" title="To Top">
         <span class="glyphicon glyphicon-chevron-up"></span>
       </a>
-
       <div class="container">
         Created by : Ryan Halfpenny , Vinne Tranquillo , Jin Kim , Ash Cole
         <br>
@@ -200,15 +175,9 @@
           title="Visit github">www.github.com</a>
       </div>
     </div>
-
   </footer>
-
-
-
-
   <script>
     // for google map api
-
     var map, infoWindow;
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
@@ -247,21 +216,16 @@
         'Error: Your browser doesn\'t support geolocation.');
       infoWindow.open(map);
     }
-
-
   </script>
-
   <!--Maps Link-->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIYLypbzuWg4gxZLmQKjsBJf0i1pAo4dk&callback=initMap"
     async defer>
     </script>
-
 </body>
 
 </html>
 
 <script>
-
   //On click function to display the available jobs
   $("#search-btn").on("click", function () {
     event.preventDefault();
@@ -308,40 +272,13 @@
       }
     });
   });
-
-
 function response() {
 alert("You have accepted this job, the Employer has been notified.")
-
-
 }
-
-
-  /*
-  Efforts for future state to update the db record when a job is accepted
-
-  {{!-- $(document).ready(function () {
-  
-    jobUpdate.on("submit", function (event) {
-      alert("You have accepted this job, the Employer has been notified.")
-      function updateJobs(jobs) {
-        $.ajax({
-          method: "PUT",
-          url: "/api/jobs",
-          recievedResponse: "yes",
-        }).then(getjobs);
-      }
-    });
-  }); --}}*/
-
 </script>
-
-
 <!--  Scripts-->
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="js/materialize.js"></script>
+<script src="js/materialize.min.js"></script> 
 <script src="js/init.js"></script>
-
 </body>
-
 </html>

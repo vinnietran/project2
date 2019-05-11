@@ -5,33 +5,19 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Employer Page</title>
-
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-  {{!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
-    crossorigin="anonymous"> --}}
-
-  <link href="styles/materialize.styles" type="text/css" rel="stylesheet" media="screen,projection" />
   <link href="styles/employerStyle.css" type="text/css" rel="stylesheet" media="screen,projection" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
-    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
-
   <!--nav-->
   <div class="navbar-fixed">
     <nav class="white" role="navigation">
-
       <!--logo-->
       <div class="nav-wrapper container">
-        <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button> -->
         <a id="logo-container" href="#myPage" class="brand-logo">taskScan
           <i class="fas fa-angle-double-right"></i>
         </a>
@@ -46,8 +32,6 @@
               <i class="fas fa-hand-pointer"></i>
             </a>
           </li>
-
-
         </ul>
 
         <ul id="nav-mobile" class="sidenav">
@@ -61,53 +45,34 @@
       </div>
     </nav>
   </div>
-
   <!--forum-->
   <div id="index-banner" class="parallax-container">
     <div class="section no-pad-bot">
-
       <div class="container">
-        
         <h1 class="header center white-text text-lighten-2">taskScan</h1>
         <div class="row center">
           <h5 class="header col s12 dark">A modern job creating app that is helping millions</h5>
         </div>
-
         <!--this will trigger our forum in a popup modal-->
-
-
-
         <div class="row center">
           <div class="col s12">
-          <!-- Modal Trigger -->
-          <button data-target="modal1" class="btn-large modal-trigger ">Getting started</button>
-          </div>  
-
+            <!-- Modal Trigger -->
+            <button data-target="modal1" class="btn-large modal-trigger ">Getting started</button>
+          </div>
         </div>
-
-
-
         <!-- Modal Structure -->
         <div id="modal1" class="modal">
           <div class="modal-content">
-
-
             <h4>Job Forum</h4>
             <br>
-
-
             <div class="row">
               <form class="jobCreate">
                 <div class="row">
-
                   <div class="input-field col s6">
                     <input id="name" type="text" class="validate">
                     <label for="first_name">First Name</label>
                   </div>
-
-
                   <!-- job category: update this -->
-
                   <div class="form-group">
                     <label for="formGroupExampleInput2">Choose a Job Category</label>
                     <select class="form-control" id="jobCategory">
@@ -116,27 +81,20 @@
                       <option>Miscellaneous</option>
                     </select>
                   </div>
-
-
                   <div class="row">
-
                   </div>
                   <!--  job description-->
-
                   <div class="row">
                     <div class="input-field col s12">
-
                       <label for="formGroupExampleInput2">Job Description</label>
                       <input id="jobDescription" type="text" class="validate" placeholder="Please fill out">
                     </div>
                   </div>
                   <!-- where-->
-
                   <div class="form-group">
                     <label for="location">*Where</label>
-                    <!-- <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number"
-                                                            maxlength="5" min="0" id="zipcode" name="location">  -->
-                    <input type="number" class="form-control" maxlength="5" min="0" id="zipcode" name="zipcode" placeholder="Zipcode">
+                    <input type="number" class="form-control" maxlength="5" min="0" id="zipcode" name="zipcode"
+                      placeholder="Zipcode">
                   </div>
                   <div class="input-field col s6">
                     <input id="date" type="text" class="validate" placeholder="DD/MM/YY">
@@ -154,37 +112,21 @@
                       <option>Between 4 PM - 6 PM </option>
                     </select>
                   </div>
-
-                  <!-- at what time?-->
-
-
-                  <!-- amount to be paid-->
-
-
-
                   <div class="row">
                     <div class="input-field col s12">
                       <input id="dollarAmount" type="text" class="validate" aria-label="Amount (to the nearest dollar)">
                       <label for="formGroupExampleInput2">Amount To Be Paid?</label>
                     </div>
                   </div>
-
-
-
                 </div>
             </div>
-
             <div class="modal-footer">
-
               <button class="btn btn-default pull-right" type="submit">Send</button>
             </div>
             </form>
           </div>
           <br>
           <br>
-
-
-
         </div>
       </div>
       <!--image1-->
@@ -193,11 +135,8 @@
       </div>
     </div>
   </div>
-
-  
   <div class="container">
     <div class="section">
-
       <!--   Icon Section   -->
       <div class="row">
         <div class="col s12 m4">
@@ -206,20 +145,22 @@
               <i class="material-icons">group</i>
             </h2>
             <h5 class="center">The Right help when I need it</h5>
-              <img src="https://i.kinja-img.com/gawker-media/image/upload/s--T2u7VCni--/c_scale,f_auto,fl_progressive,q_80,w_800/xdc1vfbnwymlahknfquc.jpg" alt="Italian Trulli" width="400" height="400">
-            <p class="light"> " I struggled for years finding help when my Son's left. Having found taskScan, I can finally find peace. <b>My son is happy too!</b> "</p>
-         
+            <img
+              src="https://i.kinja-img.com/gawker-media/image/upload/s--T2u7VCni--/c_scale,f_auto,fl_progressive,q_80,w_800/xdc1vfbnwymlahknfquc.jpg"
+              alt="Italian Trulli" width="325" height="400">
+            <p class="light"> " I struggled for years finding help when my Son's left. Having found taskScan, I can
+              finally find peace. <b>My son is happy too!</b> "</p>
           </div>
         </div>
-
         <div class="col s12 m4">
           <div class="icon-block">
             <h2 class="center brown-text">
               <i class="material-icons">done</i>
             </h2>
             <h5 class="center">Finding help, shouldn't feel like Work!</h5>
-
-            <p class="light" class="center"> <b>At taskScan we understand how the right help can make all the difference</b><p>
+            <p class="light" class="center"> <b>At taskScan we understand how the right help can make all the
+                difference</b>
+              <p>
           </div>
         </div>
 
@@ -230,17 +171,15 @@
             </h2>
             <h5 class="center">Organizing my priorities</h5>
 
-      <img src="http://www.child-encyclopedia.com/sites/default/files/styles/full_720x405/public/images/questions/parenting-skills_720_0.jpg?itok=y5WaqIGM" alt="Italian Trulli" width="400" height="400">
+            <img
+              src="http://www.child-encyclopedia.com/sites/default/files/styles/full_720x405/public/images/questions/parenting-skills_720_0.jpg?itok=y5WaqIGM"
+              alt="Italian Trulli" width="325" height="400">
             <p class="light"> " Now I have more time to enjoy the <b>most important</b>things in my life! "</p>
-         
           </div>
         </div>
       </div>
-
     </div>
   </div>
-
-
   <!--image 2 -->
   <div class="parallax-container valign-wrapper">
     <div class="section no-pad-bot">
@@ -254,7 +193,6 @@
       <img src="/images/play1.jpg" alt="Unsplashed background img 2">
     </div>
   </div>
-
 
   <!-- Container (Contact Section) -->
   <div class="container">
@@ -285,8 +223,6 @@
           </div>
         </div>
       </div>
-
-
     </div>
   </div>
 
@@ -295,7 +231,6 @@
     <div class="section no-pad-bot">
       <div class="container">
         <div class="row center">
-
           <h5 class="header col s12 light">Finding the right help has never been so easy. Click get started above
             <i class="fas fa-chevron-up"></i>
           </h5>
@@ -306,40 +241,26 @@
       <img src="/images/play4.jpg" alt="Unsplashed background img 3">
     </div>
   </div>
-
   <!--footer-->
   <footer class="page-footer teal">
-
     <div class="footer-copyright">
-
       <a href="#myPage" title="To Top">
         <span class="glyphicon glyphicon-chevron-up"></span>
       </a>
-
       <div class="container">
         Created by : Ryan Halfpenny , Vinne Tranquillo , Jin Kim , Ash Cole
         <br>
-        <a class="brown-text text-lighten-3" href="https://github.com/vinnietran/project2" title="Visit github">www.github.com</a>
+        <a class="brown-text text-lighten-3" href="https://github.com/vinnietran/project2"
+          title="Visit github">www.github.com</a>
       </div>
     </div>
-
   </footer>
-
-
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
+  {{!-- <script src="js/materialize.js"></script> --}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="js/employer.js"></script>
-  <script src="js/employerPOST.js"></script> {{!--
-  <script>
-    jobForm.on("submit", function (event) {
-      event.preventDefault();
-      console.log("job form Submitted");
-
-    });
-
-  </script> --}}
+  <script src="js/employerPOST.js"></script> 
 </body>
 
 </html>
