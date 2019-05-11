@@ -1,6 +1,7 @@
 {
   "development": {
     "username": "root",
+   vinnie-put-work
     "password": "farmboy1",
     "database": "taskscandb",
     "host": "localhost",
@@ -18,4 +19,4 @@
     "use_env_variable": "JAWSDB_URL",
     "dialect": "mysql"
   }
-}
+} 
