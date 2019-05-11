@@ -28,7 +28,7 @@
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="styles/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-  <link href="styles/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="styles/employeeStyle.css" type="text/css" rel="stylesheet" media="screen,projection" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
     integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
@@ -42,13 +42,19 @@
 
       <!--logo-->
       <div class="nav-wrapper container">
-        <a id="logo-container" href="#myPage" class="brand-logo">taskScan <i class="fas fa-angle-double-right"></i></a>
+        <a id="logo-container" href="#myPage" class="brand-logo">taskScan
+          <i class="fas fa-angle-double-right"></i>
+        </a>
         <ul class="right hide-on-med-and-down">
           <li>
-            <a href="#about">Home <i class="fas fa-home"></i> </a>
+            <a href="./">Home
+              <i class="fas fa-home"></i>
+            </a>
           </li>
           <li>
-            <a href="#services">Select Service <i class="fas fa-hand-pointer"></i></a>
+            <a href="./home">Select Service
+              <i class="fas fa-hand-pointer"></i>
+            </a>
           </li>
 
 
@@ -65,6 +71,7 @@
       </div>
     </nav>
   </div>
+
 
   <!--forum-->
   <div id="index-banner" class="parallax-container">
@@ -92,39 +99,48 @@
     <div class="section">
 
       <!--   Category Selection -->
-      <div class="row">
-        <div class="col s12 m12">
+      <div class="flexbox">
+        <div class="row">
+          <div class="col s12 m12">
 
-          <select id="category-search">
-            <option value="" disabled selected>Choose your job Category</option>
-            <option value="Maintainence">Maintainence</option>
-            <option value="Manual Labor">Manual Labor</option>
-            <option value="Miscellaneous">Miscellaneous</option>
-          </select>
-          <br>
+            <select id="category-search">
+              <option value="" disabled selected>Choose your job Category</option>
+              <option value="Maintainence">Maintainence</option>
+              <option value="Manual Labor">Manual Labor</option>
+              <option value="Miscellaneous">Miscellaneous</option>
+            </select>
+            <br>
+          </div>
         </div>
 
+
         <div class="row">
-        <div class="row">
-          <button id="search-btn" class="btn-large">Find My Job!</button>
-          <br>
-          <br>
-          <br>
-          <table class="highlight" id='jobtable'>
-            <thead>
-              <tr>
-                <th>Employer Name</th>
-                <th>Category</th>
-                <th>Description</th>
-                <th>Amount</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
+          <div class="col s12 m12">
+            <button id="search-btn" class="btn-large">Find My Job!</button>
           </div>
+        </div>
+        <div class="row">
+          <form class="jobUpdate">
+            <table class="highlight" id='jobtable'>
+              <thead>
+                <tr>
+                  <th>Employer Name</th>
+                  <th>Category</th>
+                  <th>Description</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Amount</th>
+                  <th> Select</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </form>
         </div>
       </div>
     </div>
+  </div>
+  </div>
 
   </div>
 
@@ -172,52 +188,6 @@
   </div>
 
   <footer class="page-footer teal">
-    <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like
-            it's our full time job. Any amount would help support
-            and continue development on this project and is greatly appreciated.</p>
-
-
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li>
-              <a class="white-text" href="#!">Link 1</a>
-            </li>
-            <li>
-              <a class="white-text" href="#!">Link 2</a>
-            </li>
-            <li>
-              <a class="white-text" href="#!">Link 3</a>
-            </li>
-            <li>
-              <a class="white-text" href="#!">Link 4</a>
-            </li>
-          </ul>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
-          <ul>
-            <li>
-              <a class="white-text" href="#!">Link 1</a>
-            </li>
-            <li>
-              <a class="white-text" href="#!">Link 2</a>
-            </li>
-            <li>
-              <a class="white-text" href="#!">Link 3</a>
-            </li>
-            <li>
-              <a class="white-text" href="#!">Link 4</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
     <!--footer-->
     <div class="footer-copyright">
 
@@ -282,35 +252,34 @@
 
 
   </script>
+
+  <!--Maps Link-->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIYLypbzuWg4gxZLmQKjsBJf0i1pAo4dk&callback=initMap"
-    async defer></script>
+    async defer>
+  </script>
+
 </body>
 
 </html>
 
 <script>
 
+//On click function to display the available jobs
   $("#search-btn").on("click", function () {
-    // save the character they typed into the character-search input
+    event.preventDefault();
     var searchedCategory = $("#category-search")
       .val()
       .trim();
 
-    // Using a RegEx Pattern to remove spaces from searchedCharacter
-    // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+    $("#well-section").empty()
 
-
-    // run an AJAX GET-request for our servers api,
-    // including the user's character in the url
     $.get("/api/" + searchedCategory, function (data) {
       // log the data to our console
       console.log(data);
       console.log(name);
-      // empty to well-section before adding new content
-      $("#well-section").empty();
-      // if the data is not there, then return an error message
+      
       if (!data) {
-        $("#well-section").append("<h2> No data found. </h2>");
+        $("#jobtable").append("<h2> No data found. </h2>");
       }
       else {
         // otherwise
@@ -322,16 +291,41 @@
             $("<td>").text(data[i].name),
             $("<td>").text(data[i].category),
             $("<td>").text(data[i].description),
+            $("<td>").text(data[i].date),
+            $("<td>").text(data[i].time),
             $("<td>").text("$" + data[i].amount),
+            $("<td>").append("<button id='selectJob'" + "class='btn-large'> " + "Select this Job! " + "</button>")
           );
           $("#jobtable").append(newRow);
+          console.log(data);
         }
-
-
       }
     });
   });
 
+  $("#selectJob").on("click", function () {
+    event.preventDefault();
+
+    console.log("SUP");
+  })
+
+
+  /*
+  Efforts for future state to update the db record when a job is accepted 
+
+  {{!-- $(document).ready(function () {
+    var jobUpdate = $("form.jobUpdate");
+    jobUpdate.on("submit", function (event) {
+      alert("You have accepted this job, the Employer has been notified.")
+      function updateJobs(jobs) {
+        $.ajax({
+          method: "PUT",
+          url: "/api/jobs",
+          recievedResponse: "yes",
+        }).then(getjobs);
+      }
+    });
+  }); --}}*/
 
 </script>
 

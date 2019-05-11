@@ -1,11 +1,29 @@
 
     /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
-    #map {
-      height: 100%;
+    
+    /* Optional: Makes the sample page fill the window. */
+    h3{
+      color: white;
     }
 
-    /* Optional: Makes the sample page fill the window. */
+    h5{
+      color: white;
+    }
+
+    nav ul a,
+    nav .brand-logo {
+    color: #444;
+}
+
+  th, td{
+    text-align: center;
+  }
+
+  #search-btn{
+    width: 100%;
+  }
+
     html,
     body {
       height: 100%;
