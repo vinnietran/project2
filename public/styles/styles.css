@@ -305,3 +305,9 @@ input {
     transform: translate(0);
   }
 } 
+
+.flexbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
