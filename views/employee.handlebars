@@ -120,22 +120,18 @@
           </div>
         </div>
         <div class="row">
-          <form class="jobUpdate">
-            <table class="highlight" id='jobtable'>
-              <thead>
-                <tr>
-                  <th>Employer Name</th>
-                  <th>Category</th>
-                  <th>Description</th>
-                  <th>Date</th>
-                  <th>Time</th>
-                  <th>Amount</th>
-                  <th> Select</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-          </form>
+          <div class="col s12 m12">
+            <form class="jobdisplay">
+              
+              <table class="highlight" id='jobtable'>
+                <thead>
+                  <tr></tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            
+            </form>
+          </div>
         </div>
       </div>
     </div>
@@ -256,7 +252,7 @@
   <!--Maps Link-->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIYLypbzuWg4gxZLmQKjsBJf0i1pAo4dk&callback=initMap"
     async defer>
-  </script>
+    </script>
 
 </body>
 
@@ -264,37 +260,45 @@
 
 <script>
 
-//On click function to display the available jobs
+  //On click function to display the available jobs
   $("#search-btn").on("click", function () {
     event.preventDefault();
     var searchedCategory = $("#category-search")
       .val()
       .trim();
-
-    $("#well-section").empty()
-
+    {{!-- $("#jobtable").empty() --}}
     $.get("/api/" + searchedCategory, function (data) {
       // log the data to our console
       console.log(data);
       console.log(name);
-      
+
       if (!data) {
         $("#jobtable").append("<h2> No data found. </h2>");
       }
       else {
         // otherwise
-
         console.log("test if else works");
-
+        var head = $("tr").append(
+          $("<th>").text("Employer Name"),
+          $("<th>").text("Category"),
+          $("<th>").text("Description"),
+          $("<th>").text("Date"),
+          $("<th>").text("Time"),
+          $("<th>").text("Amount"),
+          $("<th>").text("Select")
+        )
+        $("#jobtable").append(head);
         for (var i = 0; i < data.length; i++) {
+
           var newRow = $("<tr>").append(
+
             $("<td>").text(data[i].name),
             $("<td>").text(data[i].category),
             $("<td>").text(data[i].description),
             $("<td>").text(data[i].date),
             $("<td>").text(data[i].time),
             $("<td>").text("$" + data[i].amount),
-            $("<td>").append("<button id='selectJob'" + "class='btn-large'> " + "Select this Job! " + "</button>")
+            $("<td>").append("<button id='job'" + "class='btn-small'> " + "Select this Job! " + "</button>")
           );
           $("#jobtable").append(newRow);
           console.log(data);
@@ -303,7 +307,7 @@
     });
   });
 
-  $("#selectJob").on("click", function () {
+  $("#job").on("click", function () {
     event.preventDefault();
 
     console.log("SUP");
@@ -311,7 +315,7 @@
 
 
   /*
-  Efforts for future state to update the db record when a job is accepted 
+  Efforts for future state to update the db record when a job is accepted
 
   {{!-- $(document).ready(function () {
     var jobUpdate = $("form.jobUpdate");
