@@ -1,7 +1,6 @@
 {
   "development": {
     "username": "root",
-   vinnie-put-work
     "password": "farmboy1",
     "database": "taskscandb",
     "host": "localhost",

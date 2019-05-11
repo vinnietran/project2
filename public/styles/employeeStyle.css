@@ -16,6 +16,14 @@
     color: #444;
 }
 
+  th, td{
+    text-align: center;
+  }
+
+  #search-btn{
+    width: 100%;
+  }
+
     html,
     body {
       height: 100%;
