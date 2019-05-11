@@ -9,7 +9,7 @@
 
 # A new user will need to create a new login. Upon successful creation of a login, the user will be directed to a page where they can either choose to post a job, or to find a job to accept. 
 
-(public/images/home.png)
+(./public/images/home.png)
 
 # If they decide to go the employer route to post a job, they will be directed to a page where they can post their job details on a form. 
 
